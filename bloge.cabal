@@ -1,10 +1,10 @@
 Name:                bloge
 Version:             0.1
-Synopsis:            Project Synopsis Here
-Description:         Project Description Here
-License:             AllRightsReserved
-Author:              Author
-Maintainer:          maintainer@example.com
+Synopsis:            Semistatic Markdown-based blog
+Description:         Semistatic Markdown-based blog
+License:             MIT
+Author:              Andrew Lorente
+Maintainer:          hello@andrewlorente.com
 Stability:           Experimental
 Category:            Web
 Build-type:          Simple
