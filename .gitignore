@@ -5,3 +5,7 @@ cabal-dev
 *.chi
 *.chs.h
 .virthualenv
+cabal.sandbox.config
+log/access.log
+log/error.log
+.cabal-sandbox/
