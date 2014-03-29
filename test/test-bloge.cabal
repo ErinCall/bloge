@@ -19,14 +19,15 @@ Executable test-bloge
   Build-depends:
     base,
     bytestring,
+    iso8601-time,
+    parsec,
+    old-locale,
     text,
     time,
-    parsec,
-    iso8601-time,
-    old-locale,
     transformers,
-    QuickCheck,
+
     HUnit,
     test-framework-quickcheck2,
     test-framework-hunit,
-    test-framework
+    test-framework,
+    QuickCheck
