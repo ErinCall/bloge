@@ -4,18 +4,24 @@
 
 module TestDocumentParsing (testGroups) where
 
-import Test.Framework (testGroup)
-import Test.Framework.Providers.HUnit
-import Test.HUnit
-import Data.List (intercalate)
-import Data.Maybe (fromJust)
-import Data.Time.ISO8601 (parseISO8601)
-import Document
-import Text.Parsec (ParseError)
+import           Test.Framework                 (testGroup)
+import           Test.Framework.Providers.HUnit
+import           Test.HUnit
+import           Data.List                      (intercalate)
+import           Data.Maybe                     (fromJust)
+import           Data.Time.ISO8601              (parseISO8601)
+import           Document
+import           Document.Internal              (posted)
+import qualified Text.Parsec                    as P
+import qualified Text.Parsec.Error              as P
+import qualified Text.Parsec.Pos                as P
 
 testGroups = [
-    testGroup "Document parsing" [
-        testCase "parse a simple document" test_parse_simple_doc
+    testGroup "Successful document parsing" [
+      testCase "parse a simple document" test_parse_simple_doc
+    ],
+    testGroup "Field parsing errors" [
+      testCase "date-time validation" test_fail_datetime_validation
     ]
   ]
 
@@ -42,5 +48,12 @@ test_parse_simple_doc = do
 
     parseResult @?= (Right doc)
 
-instance Eq ParseError where
-  _ == _ = False
+test_fail_datetime_validation = do
+  let result = P.parse posted "" "Posted: March 15\n"
+  result @?= err "Posted date must be an ISO 8601 datetime"
+    where
+      err msg = Left $
+          P.newErrorMessage (P.UnExpect msg) (P.newPos "" 0 0)
+
+instance Eq P.ParseError where
+  a == b = P.errorMessages a == P.errorMessages b
