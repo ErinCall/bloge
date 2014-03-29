@@ -3,11 +3,10 @@
 module Document.Internal where
 
 import           Data.Functor.Identity
-import qualified Data.Text         as T
 import           Data.Time.Clock
 --import           Data.Time.ISO8601
 import           ISO8601 (parseISO8601)
-import           Text.Parsec       hiding (parse)
+import           Text.Parsec
 
 title :: ParsecT String u Identity String
 title = (string "Title: ") >> singleLine
@@ -17,8 +16,13 @@ slug = do
   string "Slug: "
   manyTill (alphaNum <|> char '-' <|> char '_') (char '\n')
 
-posted :: ParsecT String u Identity String
-posted = (string "Posted: ") >> singleLine
+posted :: ParsecT String u Identity UTCTime
+posted = do
+  string "Posted: "
+  postedAt <- singleLine
+  case parseISO8601 postedAt of
+        Just x -> return x
+        Nothing -> unexpected "Posted date must be an ISO 8601 datetime"
 
 tags :: ParsecT String u Identity [String]
 tags = do

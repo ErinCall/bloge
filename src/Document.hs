@@ -7,7 +7,6 @@ module Document (
   ) where
 
 import           Data.Time.Clock
-import           ISO8601 (parseISO8601)
 import qualified Data.Text         as T
 import           Text.Parsec       hiding (parse)
 import qualified Text.Parsec       as P
@@ -32,10 +31,7 @@ parse = P.parse document ""
     document = do
       dTitle  <- fmap T.pack title
       dSlug   <- fmap T.pack slug
-      postStr <- posted
-      dPosted <- case parseISO8601 postStr of
-            Nothing -> unexpected "Posted date must be an ISO 8601 datetime"
-            Just x  -> return x
+      dPosted <- posted
       dTags <- fmap (map T.pack) tags
       dBody <- fmap T.pack body
       eof
