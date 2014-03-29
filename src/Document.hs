@@ -23,13 +23,16 @@ data Document = Document {
   , dBody   :: T.Text
 } deriving (Eq)
 instance Show Document where
-  show = T.unpack . dTitle
+  show d = T.unpack $ T.unlines $ map ($ d) [dTitle, dSlug, dBody]
 
 parse :: String -> Either ParseError Document
 parse = P.parse document ""
   where
     document = do
-      (dTitle, dSlug, dPosted, dTags) <- fields
+      (dTitle, mSlug, dPosted, dTags) <- fields
+      let dSlug = if T.null mSlug
+                  then slugify dTitle
+                  else mSlug
       dBody <- body
       eof
       return Document {..}

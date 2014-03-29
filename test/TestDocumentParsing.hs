@@ -12,7 +12,7 @@ import           Data.List                      (sort, intercalate)
 import           Data.Maybe                     (fromJust)
 import           Data.Time.ISO8601              (parseISO8601)
 import           Document
-import           Document.Internal              (posted, slug)
+import           Document.Internal              (posted, slug, slugify)
 import qualified Text.Parsec                    as P
 import qualified Text.Parsec.Error              as P
 import qualified Text.Parsec.Pos                as P
@@ -23,10 +23,16 @@ testGroups = [
       testCase "parse a simple document" test_parse_simple_doc
     , testCase "Tag declaration may be omitted" test_omit_tag_field
     , testCase "declarations can be in any order" test_parse_in_any_order
-    ],
-    testGroup "Field parsing errors" [
+    , testCase "infer the slug from the title" test_infer_slug_from_title
+    ]
+  , testGroup "Field parsing errors" [
       testCase "date-time validation" test_fail_datetime_validation
     , testCase "slug validation" test_slug_character_restriction
+    ]
+  , testGroup "slugification" [
+      testCase "lowercases words" test_slugify_lowercases_words
+    , testCase "replaces spaces with hyphens" test_slugify_hyphenates_spaces
+    , testCase "strips nonalphanumerics" test_slugify_strips_nonalphanumerics
     ]
   ]
 
@@ -90,6 +96,26 @@ test_parse_in_any_order = do
 
     parseResult @?= (Right doc)
 
+test_infer_slug_from_title = do
+    let parseResult = parse $ intercalate "\n" [
+              "Title: This! Is! Spartaaaaaa!"
+            , "Posted: 2014-03-28T06:50:30-0700"
+            , "Tags:"
+            , "Madness?"
+            , "<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />"
+            , ""
+            ]
+        doc = Document {
+            dTitle = "This! Is! Spartaaaaaa!"
+          , dSlug = "this-is-spartaaaaaa"
+          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
+          , dTags = []
+          , dBody = "Madness?\n<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />\n"
+        }
+
+    parseResult @?= (Right doc)
+
+
 test_fail_datetime_validation = do
   let result = P.parse posted "" "Posted: March 15\n"
   result @?= err "Posted date must be an ISO 8601 datetime"
@@ -108,6 +134,15 @@ test_slug_character_restriction = do
             , P.Expect "\"\\n\""
             ]
   result @?= Left errors
+
+test_slugify_lowercases_words = do
+  slugify "LeElOoDaLlAsMuLtIcAsE" @?= "leeloodallasmulticase"
+
+test_slugify_hyphenates_spaces = do
+  slugify "in space no-one can hear you scream" @?= "in-space-no-one-can-hear-you-scream"
+
+test_slugify_strips_nonalphanumerics = do
+  slugify "1!ü_" @?= "1_"
 
 instance Eq P.ParseError where
   a == b = (length aMsgs) == (length bMsgs) &&

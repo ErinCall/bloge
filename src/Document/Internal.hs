@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
 module Document.Internal where
@@ -14,7 +15,7 @@ type Fields = (T.Text, T.Text, UTCTime, [T.Text])
 
 fields :: ParsecT String u Identity Fields
 fields  = permute (tuple <$$> title
-                         <||> slug
+                         <|?> ("", slug)
                          <||> posted
                          <|?> ([], tags))
       where
@@ -48,3 +49,9 @@ body = fmap T.pack $ fmap unlines $ many1 singleLine
 
 singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')
+
+slugify :: T.Text -> T.Text
+slugify = T.filter (`elem` legalChars) . T.map despace . T.toLower
+  where despace ' ' = '-'
+        despace x = x
+        legalChars = ['a'..'z'] ++ ['0'..'9'] ++ "-_"
