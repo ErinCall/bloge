@@ -21,6 +21,7 @@ deriving instance Show P.Message
 testGroups = [
     testGroup "Successful document parsing" [
       testCase "parse a simple document" test_parse_simple_doc
+    , testCase "Tag declaration may be omitted" test_omit_tag_field
     ],
     testGroup "Field parsing errors" [
       testCase "date-time validation" test_fail_datetime_validation
@@ -47,6 +48,24 @@ test_parse_simple_doc = do
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = ["partying", "drinkin'", "socializing"]
           , dBody = "Party at my place!\nWe will have fun.\n"
+        }
+
+    parseResult @?= (Right doc)
+
+test_omit_tag_field = do
+    let parseResult = parse $ intercalate "\n" [
+            "Title: Hanes T-Shirts Don't Have Tags"
+          , "Slug: hanes-t-shirts-dont-have-tags"
+          , "Posted: 2014-03-28T06:50:30-0700"
+          , "Honestly I'm not sure it's all that important"
+          , ""
+          ]
+        doc = Document {
+            dTitle = "Hanes T-Shirts Don't Have Tags"
+          , dSlug = "hanes-t-shirts-dont-have-tags"
+          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
+          , dTags = []
+          , dBody = "Honestly I'm not sure it's all that important\n"
         }
 
     parseResult @?= (Right doc)

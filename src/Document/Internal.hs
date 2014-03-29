@@ -28,8 +28,9 @@ posted = do
 
 tags :: ParsecT String u Identity [String]
 tags = do
-  string "Tags:\n"
-  many $ (string "    ") >> singleLine
+    string "Tags:\n"
+    many $ (string "    ") >> singleLine
+  <|> return []
 
 body :: ParsecT String u Identity String
 body = fmap unlines $ many1 singleLine
