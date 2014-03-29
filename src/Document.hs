@@ -29,10 +29,7 @@ parse :: String -> Either ParseError Document
 parse = P.parse document ""
   where
     document = do
-      dTitle  <- fmap T.pack title
-      dSlug   <- fmap T.pack slug
-      dPosted <- posted
-      dTags <- fmap (map T.pack) tags
-      dBody <- fmap T.pack body
+      (dTitle, dSlug, dPosted, dTags) <- fields
+      dBody <- body
       eof
       return Document {..}

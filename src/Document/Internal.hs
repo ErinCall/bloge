@@ -2,38 +2,49 @@
 
 module Document.Internal where
 
+import qualified Data.Text             as T
 import           Data.Functor.Identity
 import           Data.Time.Clock
 --import           Data.Time.ISO8601
-import           ISO8601 (parseISO8601)
+import           ISO8601               (parseISO8601)
 import           Text.Parsec
+import           Text.Parsec.Perm
 
-title :: ParsecT String u Identity String
-title = (string "Title: ") >> singleLine
+type Fields = (T.Text, T.Text, UTCTime, [T.Text])
 
-slug :: ParsecT String u Identity String
-slug = do
+fields :: ParsecT String u Identity Fields
+fields  = permute (tuple <$$> title
+                         <||> slug
+                         <||> posted
+                         <|?> ([], tags))
+      where
+        tuple a b c d = (a, b, c, d)
+
+title :: ParsecT String u Identity T.Text
+title = fmap T.pack $ try $ (string "Title: ") >> singleLine
+
+slug :: ParsecT String u Identity T.Text
+slug = try $ do
   string "Slug: "
   let slugChar = alphaNum <|> char '-' <|> char '_'
                  <?> "URL-friendly string: alphanumerics, -, or _"
-  manyTill slugChar (char '\n')
+  fmap T.pack $ manyTill slugChar (char '\n')
 
 posted :: ParsecT String u Identity UTCTime
-posted = do
+posted = try $ do
   string "Posted: "
   postedAt <- singleLine
   case parseISO8601 postedAt of
         Just x -> return x
         Nothing -> unexpected "Posted date must be an ISO 8601 datetime"
 
-tags :: ParsecT String u Identity [String]
-tags = do
-    string "Tags:\n"
-    many $ (string "    ") >> singleLine
-  <|> return []
+tags :: ParsecT String u Identity [T.Text]
+tags = try $ do
+  string "Tags:\n"
+  fmap (map T.pack) $ many $ (string "    ") >> singleLine
 
-body :: ParsecT String u Identity String
-body = fmap unlines $ many1 singleLine
+body :: ParsecT String u Identity T.Text
+body = fmap T.pack $ fmap unlines $ many1 singleLine
 
 singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')

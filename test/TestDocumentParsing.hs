@@ -22,6 +22,7 @@ testGroups = [
     testGroup "Successful document parsing" [
       testCase "parse a simple document" test_parse_simple_doc
     , testCase "Tag declaration may be omitted" test_omit_tag_field
+    , testCase "declarations can be in any order" test_parse_in_any_order
     ],
     testGroup "Field parsing errors" [
       testCase "date-time validation" test_fail_datetime_validation
@@ -66,6 +67,25 @@ test_omit_tag_field = do
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
           , dBody = "Honestly I'm not sure it's all that important\n"
+        }
+
+    parseResult @?= (Right doc)
+
+test_parse_in_any_order = do
+    let parseResult = parse $ intercalate "\n" [
+            "Posted: 2014-03-28T06:50:30-0700"
+          , "Title: I'm a friggin rebel"
+          , "Tags:"
+          , "Slug: any-order-i-want"
+          , "You can't pin me down with your REGULATIONS"
+          , ""
+          ]
+        doc = Document {
+            dTitle = "I'm a friggin rebel"
+          , dSlug = "any-order-i-want"
+          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
+          , dTags = []
+          , dBody = "You can't pin me down with your REGULATIONS\n"
         }
 
     parseResult @?= (Right doc)
