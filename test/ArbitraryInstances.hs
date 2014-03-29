@@ -8,6 +8,7 @@ import           Test.QuickCheck
 import           Data.Time.Calendar
 import           Data.Time.Clock
 import qualified Data.Text             as T
+import           Document
 
 instance Arbitrary Day where
   arbitrary = do
@@ -25,3 +26,12 @@ instance Arbitrary DiffTime where
 
 instance Arbitrary T.Text where
   arbitrary = arbitrary >>= (return . T.pack)
+
+instance Arbitrary Document where
+  arbitrary = do
+    dTitle <- arbitrary
+    dPosted <- arbitrary
+    dTags <- arbitrary
+    dSlug <- arbitrary
+    dBody <- arbitrary
+    return Document {..}

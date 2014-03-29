@@ -21,4 +21,12 @@ Executable test-bloge
     bytestring,
     text,
     time,
-    QuickCheck > 2
+    parsec,
+    iso8601-time,
+    old-locale,
+    transformers,
+    QuickCheck,
+    HUnit,
+    test-framework-quickcheck2,
+    test-framework-hunit,
+    test-framework
