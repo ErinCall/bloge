@@ -14,7 +14,9 @@ title = (string "Title: ") >> singleLine
 slug :: ParsecT String u Identity String
 slug = do
   string "Slug: "
-  manyTill (alphaNum <|> char '-' <|> char '_') (char '\n')
+  let slugChar = alphaNum <|> char '-' <|> char '_'
+                 <?> "URL-friendly string: alphanumerics, -, or _"
+  manyTill slugChar (char '\n')
 
 posted :: ParsecT String u Identity UTCTime
 posted = do

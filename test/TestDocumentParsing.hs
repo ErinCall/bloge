@@ -1,3 +1,4 @@
+{-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
@@ -7,14 +8,15 @@ module TestDocumentParsing (testGroups) where
 import           Test.Framework                 (testGroup)
 import           Test.Framework.Providers.HUnit
 import           Test.HUnit
-import           Data.List                      (intercalate)
+import           Data.List                      (sort, intercalate)
 import           Data.Maybe                     (fromJust)
 import           Data.Time.ISO8601              (parseISO8601)
 import           Document
-import           Document.Internal              (posted)
+import           Document.Internal              (posted, slug)
 import qualified Text.Parsec                    as P
 import qualified Text.Parsec.Error              as P
 import qualified Text.Parsec.Pos                as P
+deriving instance Show P.Message
 
 testGroups = [
     testGroup "Successful document parsing" [
@@ -22,6 +24,7 @@ testGroups = [
     ],
     testGroup "Field parsing errors" [
       testCase "date-time validation" test_fail_datetime_validation
+    , testCase "slug validation" test_slug_character_restriction
     ]
   ]
 
@@ -55,5 +58,23 @@ test_fail_datetime_validation = do
       err msg = Left $
           P.newErrorMessage (P.UnExpect msg) (P.newPos "" 0 0)
 
+test_slug_character_restriction = do
+  let result = P.parse slug "" "Slug: I Hate Clean URLs!\n"
+      firstError = P.newErrorMessage (P.SysUnExpect "\" \"") (P.newPos "" 1 8)
+      errors = foldl (flip P.addErrorMessage) firstError [
+              P.SysUnExpect "\" \""
+            , P.SysUnExpect "\" \""
+            , P.SysUnExpect "\" \""
+            , P.Expect "URL-friendly string: alphanumerics, -, or _"
+            , P.Expect "\"\\n\""
+            ]
+  result @?= Left errors
+
 instance Eq P.ParseError where
-  a == b = P.errorMessages a == P.errorMessages b
+  a == b = (length aMsgs) == (length bMsgs) &&
+                             (and $ zipWith eq (sort aMsgs) (sort bMsgs))
+    where
+      aMsgs = P.errorMessages a
+      bMsgs = P.errorMessages b
+      eq :: P.Message -> P.Message -> Bool
+      x `eq` y = x == y && P.messageString x == P.messageString y
