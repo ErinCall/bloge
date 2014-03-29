@@ -2,38 +2,54 @@
 
 module Document.Internal where
 
+import qualified Data.Text             as T
 import           Data.Functor.Identity
 import           Data.Time.Clock
 --import           Data.Time.ISO8601
 import           ISO8601 (parseISO8601)
 import           Text.Parsec
 
-title :: ParsecT String u Identity String
-title = (string "Title: ") >> singleLine
+data Field = Title T.Text
+           | Slug T.Text
+           | Posted UTCTime
+           | Tags [T.Text]
+           | Body T.Text
+  deriving (Show, Eq)
 
-slug :: ParsecT String u Identity String
+title :: ParsecT String u Identity Field
+title = do
+  string "Title: "
+  titleText <- singleLine
+  return $ Title $ T.pack titleText
+
+slug :: ParsecT String u Identity Field
 slug = do
   string "Slug: "
   let slugChar = alphaNum <|> char '-' <|> char '_'
                  <?> "URL-friendly string: alphanumerics, -, or _"
-  manyTill slugChar (char '\n')
+  slugText <- manyTill slugChar (char '\n')
+  return $ Slug $ T.pack slugText
 
-posted :: ParsecT String u Identity UTCTime
+posted :: ParsecT String u Identity Field
 posted = do
   string "Posted: "
   postedAt <- singleLine
-  case parseISO8601 postedAt of
+  postedDate <- case parseISO8601 postedAt of
         Just x -> return x
         Nothing -> unexpected "Posted date must be an ISO 8601 datetime"
+  return $ Posted postedDate
 
-tags :: ParsecT String u Identity [String]
+tags :: ParsecT String u Identity Field
 tags = do
     string "Tags:\n"
-    many $ (string "    ") >> singleLine
-  <|> return []
+    tagList <- many $ (string "    ") >> singleLine
+    return $ Tags $ map T.pack tagList
+  <|> (return $ Tags [])
 
-body :: ParsecT String u Identity String
-body = fmap unlines $ many1 singleLine
+body :: ParsecT String u Identity Field
+body = do
+  contents <- many1 singleLine
+  return $ Body $ T.pack $ unlines contents
 
 singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')
