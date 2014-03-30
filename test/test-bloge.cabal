@@ -19,6 +19,7 @@ Executable test-bloge
   Build-depends:
     base,
     bytestring,
+    containers,
     iso8601-time,
     parsec,
     old-locale,

@@ -3,6 +3,7 @@
 
 module Document.Internal where
 
+import qualified Data.Set              as S
 import qualified Data.Text             as T
 import           Data.Functor.Identity
 import           Data.Time.Clock
@@ -51,7 +52,7 @@ singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')
 
 slugify :: T.Text -> T.Text
-slugify = T.filter (`elem` legalChars) . T.map despace . T.toLower
+slugify = T.filter (`S.member` legalChars) . T.map despace . T.toLower
   where despace ' ' = '-'
         despace x = x
-        legalChars = ['a'..'z'] ++ ['0'..'9'] ++ "-_"
+        legalChars = S.fromList $ '-' : ['0'..'9'] ++ "_" ++ ['a'..'z']
