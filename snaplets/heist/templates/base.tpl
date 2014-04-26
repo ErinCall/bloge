@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><page-title/> | Professional Software Deleter</title>
+    <title><page-title/></title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/screen.css" rel="stylesheet" type="text/css" media="screen">

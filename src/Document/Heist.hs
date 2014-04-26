@@ -1,6 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Document.Heist where
+module Document.Heist
+  ( documentRoutes
+  , bindDocuments
+  ) where
 
 import qualified Heist.Interpreted           as I
 import           Snap.Snaplet
@@ -20,6 +23,9 @@ documentRoutes docs = [(pathOf doc, renderDoc doc) | doc <- docs]
     where
         pathOf doc = "/p/" `B.append` (T.encodeUtf8 $ dSlug doc)
         renderDoc doc = renderWithSplices "post" (documentSplices doc)
+
+bindDocuments :: Monad n => [Document] -> I.Splice n
+bindDocuments = I.mapSplices $ I.runChildrenWith . documentSplices
 
 documentSplices :: Monad n => Document -> Splices (I.Splice n)
 documentSplices d = do
