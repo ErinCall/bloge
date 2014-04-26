@@ -27,7 +27,7 @@ Executable bloge
     containers                >= 0.5     && <0.6,
     filemanip                 >= 0.3     && < 0.4,
     heist                     >= 0.13    && < 0.14,
-    iso8601-time              >= 0.1.1,
+    iso8601-time              >= 0.1.2,
     MissingH                  >= 1.2     && < 2,
     MonadCatchIO-transformers >= 0.2.1   && < 0.4,
     mtl                       >= 2       && < 3,

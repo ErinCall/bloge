@@ -7,8 +7,7 @@ import qualified Data.Set              as S
 import qualified Data.Text             as T
 import           Data.Functor.Identity
 import           Data.Time.Clock
---import           Data.Time.ISO8601
-import           ISO8601               (parseISO8601)
+import           Data.Time.ISO8601     (parseISO8601)
 import           Text.Parsec
 import           Text.Parsec.Perm
 
