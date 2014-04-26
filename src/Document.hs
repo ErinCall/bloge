@@ -4,6 +4,7 @@ module Document (
     Tag,
     Document(..),
     parse,
+    parseFile,
   ) where
 
 import           Data.Time.Clock
@@ -26,7 +27,15 @@ instance Show Document where
   show d = T.unpack $ T.unlines $ map ($ d) [dTitle, dSlug, dBody]
 
 parse :: String -> Either ParseError Document
-parse = P.parse document ""
+parse = parse' ""
+
+parseFile :: FilePath -> IO (Either ParseError Document)
+parseFile path = do
+  contents <- readFile path
+  return $ parse' (show path) contents
+
+parse' :: String -> String -> Either ParseError Document
+parse' filename = P.parse document filename
   where
     document = do
       (dTitle, mSlug, dPosted, dTags) <- fields

@@ -10,8 +10,9 @@ module Site
 
 ------------------------------------------------------------------------------
 import           Control.Applicative
-import           Data.ByteString (ByteString)
-import qualified Data.Text as T
+import           Data.ByteString     (ByteString)
+import qualified Data.Text           as T
+import           Data.Monoid         (mempty)
 import           Snap.Core
 import           Snap.Snaplet
 import           Snap.Snaplet.Auth
@@ -23,6 +24,9 @@ import           Heist
 import qualified Heist.Interpreted as I
 ------------------------------------------------------------------------------
 import           Application
+import           Splices        (currentPath)
+import           Document
+import           Document.Heist
 
 
 ------------------------------------------------------------------------------
@@ -65,14 +69,14 @@ routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
-         , ("",          serveDirectory "static")
+         , ("/static",   serveDirectory "static")
          ]
 
 
 ------------------------------------------------------------------------------
 -- | The application initializer.
-app :: SnapletInit App App
-app = makeSnaplet "app" "An snaplet example application." Nothing $ do
+app :: [Document] -> SnapletInit App App
+app docs = makeSnaplet "app" "An snaplet example application." Nothing $ do
     h <- nestSnaplet "" heist $ heistInit "templates"
     s <- nestSnaplet "sess" sess $
            initCookieSessionManager "site_key.txt" "sess" (Just 3600)
@@ -82,7 +86,12 @@ app = makeSnaplet "app" "An snaplet example application." Nothing $ do
     -- you'll probably want to change this to a more robust auth backend.
     a <- nestSnaplet "auth" auth $
            initJsonFileAuthManager defAuthSettings sess "users.json"
+    let config = mempty {
+        hcInterpretedSplices = "currentPath" ## currentPath
+      }
     addRoutes routes
+    addRoutes $ documentRoutes docs
     addAuthSplices h auth
+    addConfig h config
     return $ App h s a
 

@@ -24,7 +24,10 @@ Executable bloge
 
   Build-depends:
     bytestring                >= 0.9.1   && < 0.11,
+    containers                >= 0.5     && <0.6,
+    filemanip                 >= 0.3     && < 0.4,
     heist                     >= 0.13    && < 0.14,
+    MissingH                  >= 1.2     && < 2,
     MonadCatchIO-transformers >= 0.2.1   && < 0.4,
     mtl                       >= 2       && < 3,
     snap                      >= 0.13    && < 0.14,

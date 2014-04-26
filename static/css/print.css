@@ -1,0 +1,11 @@
+header, footer {
+  display: none;
+}
+
+page {
+  border: none;
+}
+
+body * {
+  color: black;
+}

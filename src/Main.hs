@@ -17,6 +17,7 @@ module Main where
 
 ------------------------------------------------------------------------------
 import           Control.Exception (SomeException, try)
+import           Data.Either.Utils (forceEither)
 import qualified Data.Text as T
 import           Snap.Http.Server
 import           Snap.Snaplet
@@ -24,6 +25,8 @@ import           Snap.Snaplet.Config
 import           Snap.Core
 import           System.IO
 import           Site
+import           Document
+import           System.FilePath.Find
 
 #ifdef DEVELOPMENT
 import           Snap.Loader.Dynamic
@@ -80,6 +83,12 @@ main = do
     cleanup
 
 
+getDocuments :: IO [Document]
+getDocuments = do
+  postFiles <- find (return True) (extension ==? ".md") ("/Users/andrewlorente/code/bloge/posts/")
+  docs <- mapM parseFile postFiles
+  return $ map (forceEither) docs
+
 ------------------------------------------------------------------------------
 -- | This action loads the config used by this application. The loaded config
 -- is returned as the first element of the tuple produced by the loadSnapTH
@@ -108,7 +117,8 @@ getConf = commandLineAppConfig defaultConfig
 -- sophisticated code might.
 getActions :: Config Snap AppConfig -> IO (Snap (), IO ())
 getActions conf = do
+    docs <- getDocuments
     (msgs, site, cleanup) <- runSnaplet
-        (appEnvironment =<< getOther conf) app
+        (appEnvironment =<< getOther conf) $ app docs
     hPutStrLn stderr $ T.unpack msgs
     return (site, cleanup)
