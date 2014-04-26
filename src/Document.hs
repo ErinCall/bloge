@@ -1,4 +1,6 @@
 {-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
 
 module Document (
     Tag,
@@ -8,23 +10,30 @@ module Document (
   ) where
 
 import           Data.Time.Clock
-import qualified Data.Text         as T
-import           Text.Parsec       hiding (parse)
-import qualified Text.Parsec       as P
+import qualified Data.Text                     as T
+import qualified Data.Text.Lazy                as L
+import           Text.Blaze.Html               (Html)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
+import           Text.Parsec                   hiding (parse)
+import qualified Text.Parsec                   as P
 
 import Document.Internal
 
 type Tag = T.Text
+
+instance Eq Html where
+  a == b = (renderHtml a == renderHtml b)
 
 data Document = Document {
     dTitle  :: T.Text
   , dSlug   :: T.Text
   , dPosted :: UTCTime
   , dTags   :: [ Tag ]
-  , dBody   :: T.Text
+  , dBody   :: Html
 } deriving (Eq)
 instance Show Document where
-  show d = T.unpack $ T.unlines $ map ($ d) [dTitle, dSlug, dBody]
+  show d = T.unpack $ T.unlines $ map ($ d)
+           [dTitle, dSlug, L.toStrict . renderHtml . dBody]
 
 parse :: String -> Either ParseError Document
 parse = parse' ""

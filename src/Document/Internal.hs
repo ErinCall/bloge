@@ -6,12 +6,12 @@ module Document.Internal where
 import           Data.Default          (def)
 import qualified Data.Set              as S
 import qualified Data.Text             as T
-import qualified Data.Text.Lazy        as T (fromStrict, toStrict)
+import qualified Data.Text.Lazy        as L
 import           Data.Functor.Identity
 import           Data.Time.Clock
-import           Data.Time.ISO8601             (parseISO8601)
-import           Text.Blaze.Html.Renderer.Text (renderHtml)
-import           Text.Markdown                 (markdown, MarkdownSettings(..))
+import           Data.Time.ISO8601     (parseISO8601)
+import           Text.Blaze.Html       (Html)
+import           Text.Markdown         (markdown, MarkdownSettings(..))
 import           Text.Parsec
 import           Text.Parsec.Perm
 
@@ -48,9 +48,8 @@ tags = try $ do
   string "Tags:\n"
   fmap (map T.pack) $ many $ (string "    ") >> singleLine
 
-body :: ParsecT String u Identity T.Text
-body = fmap (T.toStrict . renderHtml . md . T.fromStrict . T.pack . unlines)
-            (many1 singleLine)
+body :: ParsecT String u Identity Html
+body = fmap (md . L.pack . unlines) (many1 singleLine)
     where
       md = markdown $ def { msXssProtect = False }
 

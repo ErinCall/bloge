@@ -8,14 +8,17 @@ module TestDocumentParsing (testGroups) where
 import           Test.Framework                 (testGroup)
 import           Test.Framework.Providers.HUnit
 import           Test.HUnit
+import           Data.Default                   (def)
 import           Data.List                      (sort, intercalate)
 import           Data.Maybe                     (fromJust)
 import           Data.Time.ISO8601              (parseISO8601)
 import           Document
 import           Document.Internal              (posted, body, slug, slugify)
+import           Text.Markdown                  (markdown)
 import qualified Text.Parsec                    as P
 import qualified Text.Parsec.Error              as P
 import qualified Text.Parsec.Pos                as P
+import           Text.Blaze.Html.Renderer.Text  (renderHtml)
 deriving instance Show P.Message
 
 testGroups = [
@@ -55,7 +58,7 @@ test_parse_simple_doc = do
           , dSlug = "whoa-mama"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = ["partying", "drinkin'", "socializing"]
-          , dBody = "<p>Party at my place!\nWe will have fun.</p>"
+          , dBody = markdown def "Party at my place!\nWe will have fun.\n"
         }
 
     parseResult @?= (Right doc)
@@ -68,15 +71,8 @@ test_omit_tag_field = do
           , "Honestly I'm not sure it's all that important"
           , ""
           ]
-        doc = Document {
-            dTitle = "Hanes T-Shirts Don't Have Tags"
-          , dSlug = "hanes-t-shirts-dont-have-tags"
-          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
-          , dTags = []
-          , dBody = "<p>Honestly I&#39;m not sure it&#39;s all that important</p>"
-        }
 
-    parseResult @?= (Right doc)
+    fmap dTags parseResult @?= (Right [])
 
 test_parse_in_any_order = do
     let parseResult = parse $ intercalate "\n" [
@@ -84,7 +80,7 @@ test_parse_in_any_order = do
           , "Title: I'm a friggin rebel"
           , "Tags:"
           , "Slug: any-order-i-want"
-          , "You can't pin me down with your REGULATIONS"
+          , "You cannot pin me down with your REGULATIONS"
           , ""
           ]
         doc = Document {
@@ -92,7 +88,7 @@ test_parse_in_any_order = do
           , dSlug = "any-order-i-want"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
-          , dBody = "<p>You can&#39;t pin me down with your REGULATIONS</p>"
+          , dBody = markdown def "You cannot pin me down with your REGULATIONS"
         }
 
     parseResult @?= (Right doc)
@@ -106,18 +102,11 @@ test_infer_slug_from_title = do
             , "<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />"
             , ""
             ]
-        doc = Document {
-            dTitle = "This! Is! Spartaaaaaa!"
-          , dSlug = "this-is-spartaaaaaa"
-          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
-          , dTags = []
-          , dBody = "<p>Madness?\n<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' /></p>"
-        }
 
-    parseResult @?= (Right doc)
+    fmap dSlug parseResult @?= (Right "this-is-spartaaaaaa")
 
 test_render_markdown = do
-  let parseResult = P.parse body "" "[click here for wonder](https://andrewlorente.com)\n"
+  let parseResult = fmap renderHtml $ P.parse body "" "[click here for wonder](https://andrewlorente.com)\n"
 
   parseResult @?= (Right "<p><a href=\"https://andrewlorente.com\">click here for wonder</a></p>")
 
