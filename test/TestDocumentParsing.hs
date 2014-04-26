@@ -12,7 +12,7 @@ import           Data.List                      (sort, intercalate)
 import           Data.Maybe                     (fromJust)
 import           Data.Time.ISO8601              (parseISO8601)
 import           Document
-import           Document.Internal              (posted, slug, slugify)
+import           Document.Internal              (posted, body, slug, slugify)
 import qualified Text.Parsec                    as P
 import qualified Text.Parsec.Error              as P
 import qualified Text.Parsec.Pos                as P
@@ -24,6 +24,7 @@ testGroups = [
     , testCase "Tag declaration may be omitted" test_omit_tag_field
     , testCase "declarations can be in any order" test_parse_in_any_order
     , testCase "infer the slug from the title" test_infer_slug_from_title
+    , testCase "markdown in the body is rendered as html" test_render_markdown
     ]
   , testGroup "Field parsing errors" [
       testCase "date-time validation" test_fail_datetime_validation
@@ -54,7 +55,7 @@ test_parse_simple_doc = do
           , dSlug = "whoa-mama"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = ["partying", "drinkin'", "socializing"]
-          , dBody = "Party at my place!\nWe will have fun.\n"
+          , dBody = "<p>Party at my place!\nWe will have fun.</p>"
         }
 
     parseResult @?= (Right doc)
@@ -72,7 +73,7 @@ test_omit_tag_field = do
           , dSlug = "hanes-t-shirts-dont-have-tags"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
-          , dBody = "Honestly I'm not sure it's all that important\n"
+          , dBody = "<p>Honestly I&#39;m not sure it&#39;s all that important</p>"
         }
 
     parseResult @?= (Right doc)
@@ -91,7 +92,7 @@ test_parse_in_any_order = do
           , dSlug = "any-order-i-want"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
-          , dBody = "You can't pin me down with your REGULATIONS\n"
+          , dBody = "<p>You can&#39;t pin me down with your REGULATIONS</p>"
         }
 
     parseResult @?= (Right doc)
@@ -110,10 +111,15 @@ test_infer_slug_from_title = do
           , dSlug = "this-is-spartaaaaaa"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
-          , dBody = "Madness?\n<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />\n"
+          , dBody = "<p>Madness?\n<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' /></p>"
         }
 
     parseResult @?= (Right doc)
+
+test_render_markdown = do
+  let parseResult = P.parse body "" "[click here for wonder](https://andrewlorente.com)\n"
+
+  parseResult @?= (Right "<p><a href=\"https://andrewlorente.com\">click here for wonder</a></p>")
 
 
 test_fail_datetime_validation = do

@@ -3,11 +3,15 @@
 
 module Document.Internal where
 
+import           Data.Default          (def)
 import qualified Data.Set              as S
 import qualified Data.Text             as T
+import qualified Data.Text.Lazy        as T (fromStrict, toStrict)
 import           Data.Functor.Identity
 import           Data.Time.Clock
-import           Data.Time.ISO8601     (parseISO8601)
+import           Data.Time.ISO8601             (parseISO8601)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
+import           Text.Markdown                 (markdown, MarkdownSettings(..))
 import           Text.Parsec
 import           Text.Parsec.Perm
 
@@ -45,7 +49,10 @@ tags = try $ do
   fmap (map T.pack) $ many $ (string "    ") >> singleLine
 
 body :: ParsecT String u Identity T.Text
-body = fmap T.pack $ fmap unlines $ many1 singleLine
+body = fmap (T.toStrict . renderHtml . md . T.fromStrict . T.pack . unlines)
+            (many1 singleLine)
+    where
+      md = markdown $ def { msXssProtect = False }
 
 singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')

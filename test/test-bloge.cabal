@@ -18,9 +18,12 @@ Executable test-bloge
 
   Build-depends:
     base,
+    blaze-html,
     bytestring,
     containers,
+    data-default,
     iso8601-time,
+    markdown,
     parsec,
     old-locale,
     text,
