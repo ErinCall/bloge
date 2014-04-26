@@ -7,20 +7,11 @@
    float: left;
 }
 
-.grid-cell {
-   text-align: center;
-}
-
-.grid-element {
-   margin-left: 15px;
-   margin-bottom: 15px;
+article {
+   padding-left: 15px;
+   padding-bottom: 15px;
    background-color: #F0F0F0;
    border-radius: 15px;
-   height: 10em;
-}
-
-.grid-element:hover {
-   background-color: #C0C0F7;
 }
 
 h4 {
@@ -45,7 +36,6 @@ a:hover {
 }
 
 header {
-   margin: -10px;
    min-height: 145px; /* The height of header.png, plus 1px for the border */
    border-bottom: 1px solid black;
    font-family: Georgia, Times New Roman, serif;

@@ -9,6 +9,17 @@
   </head>
   <body>
     <div class="content">
+      <header>
+        <a href="/">
+          <img src="/static/images/header.png" alt="Andrew Lorente" class="header-image">
+          <h1>
+            Andrew Lorente
+          </h1>
+          <h2>
+            Professional Software Deleter
+          </h2>
+        </a>
+      </header>
 
       <apply-content/>
 
