@@ -18,6 +18,7 @@ module Main where
 ------------------------------------------------------------------------------
 import           Control.Exception (SomeException, try)
 import           Data.Either.Utils (forceEither)
+import           Data.List.Class   (sortOn)
 import qualified Data.Text as T
 import           Snap.Http.Server
 import           Snap.Snaplet
@@ -87,7 +88,7 @@ getDocuments :: IO [Document]
 getDocuments = do
   postFiles <- find (return True) (extension ==? ".md") ("/Users/andrewlorente/code/bloge/posts/")
   docs <- mapM parseFile postFiles
-  return $ map (forceEither) docs
+  return $ reverse $ sortOn dPosted $ map (forceEither) docs
 
 ------------------------------------------------------------------------------
 -- | This action loads the config used by this application. The loaded config
