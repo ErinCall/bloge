@@ -25,9 +25,13 @@ import           Document.Heist
 index :: Handler App App ()
 index = method GET $ render "index"
 
+atom :: Handler App App ()
+atom = method GET $ renderAs "application/atom+xml" "atom"
+
 routes :: [(ByteString, Handler App App ())]
-routes = [ ("/",       ifTop index)
-         , ("/static", serveDirectory "static")
+routes = [ ("/",           ifTop index)
+         , ("/posts.atom", atom)
+         , ("/static",     serveDirectory "static")
          ]
 
 app :: [Document] -> SnapletInit App App
@@ -37,6 +41,7 @@ app docs = makeSnaplet "app" "An snaplet example application." Nothing $ do
         hcInterpretedSplices = do
             "currentPath" ## currentPath
             "posts" ## (bindDocuments docs)
+            "latestPost" ## (postedSplice $ head docs)
       }
     addRoutes routes
     addRoutes $ documentRoutes docs
