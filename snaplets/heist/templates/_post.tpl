@@ -4,6 +4,6 @@
     <postBody/>
   </section>
   <div class="meta">
-    <div>Posted on <postPostedDate/></div>
+    <div>Posted on <span class="dateTime"><postPostedDate/></span></div>
   </div>
 </article>
