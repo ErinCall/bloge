@@ -3,15 +3,20 @@
 module Document.Heist
   ( documentRoutes
   , bindDocuments
+  , tagRoutes
   ) where
 
+import           Prelude                     hiding (lookup)
 import qualified Heist.Interpreted           as I
 import           Snap.Snaplet
 import           Snap.Snaplet.Heist
 import           Heist
+import           Data.HashMap                (keys, empty, lookup)
 import qualified Data.ByteString             as B
-import           Data.Text                   as T
-import           Data.Text.Encoding          as T
+import           Data.List                   (intersperse)
+import           Data.Maybe                  (fromJust)
+import qualified Data.Text                   as T
+import qualified Data.Text.Encoding          as T
 import           Data.Time.ISO8601           (formatISO8601)
 import           Text.Blaze.Renderer.XmlHtml (renderHtml)
 import qualified Text.XmlHtml                as X
@@ -33,3 +38,22 @@ documentSplices d = do
   "postSlug"       ## I.textSplice (dSlug d)
   "postPostedDate" ## I.textSplice (T.pack $ formatISO8601 $ dPosted d)
   "postBody"       ## I.runNodeList $ X.docContent $ renderHtml $ dBody d
+  "tagListing"     ## I.runNodeList $ if (null $ dTags d) then [] else
+      [ X.TextNode "Posted in " ]
+      ++ (intersperse (X.TextNode ", ") $ map tagLink $ dTags d) ++
+      [ X.TextNode "." ]
+    where
+      tagLink tag = X.Element "a"
+                              [("href", "/t/" `T.append` tag)]
+                              [X.TextNode tag]
+
+
+
+tagRoutes :: [Document] -> [(B.ByteString, Handler App App ())]
+tagRoutes docs = [(pathOf tag, renderTag tag) | tag <- keys docMap]
+  where
+    pathOf tag = "/t/" `B.append` T.encodeUtf8 tag
+    docMap = foldr insertDoc empty docs
+    renderTag tag = renderWithSplices "tagResults" $ do
+        "posts" ## bindDocuments $ fromJust $ lookup tag docMap
+        "tagName" ## I.textSplice tag

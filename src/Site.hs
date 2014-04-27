@@ -40,6 +40,7 @@ app docs = makeSnaplet "app" "An snaplet example application." Nothing $ do
       }
     addRoutes routes
     addRoutes $ documentRoutes docs
+    addRoutes $ tagRoutes docs
     addConfig h config
     return $ App h
 

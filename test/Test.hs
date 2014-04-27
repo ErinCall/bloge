@@ -11,6 +11,7 @@ import ArbitraryInstances()
 import Document
 
 import TestDocumentParsing as DP
+import TestTagList         as TL
 
 main :: IO ()
 main = defaultMain tests
@@ -21,6 +22,7 @@ tests = [
       testProperty "eq derivation" prop_eq_derivation_still_works
     ]
   ] ++ DP.testGroups
+    ++ TL.testGroups
 
 prop_eq_derivation_still_works :: Document -> Bool
 prop_eq_derivation_still_works x = x == x

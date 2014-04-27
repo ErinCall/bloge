@@ -22,6 +22,7 @@ Executable test-bloge
     bytestring,
     containers,
     data-default,
+    hashmap,
     iso8601-time,
     markdown,
     parsec,
@@ -29,6 +30,7 @@ Executable test-bloge
     text,
     time,
     transformers,
+    unordered-containers,
 
     HUnit,
     test-framework-quickcheck2,

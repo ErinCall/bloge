@@ -1,7 +1,7 @@
 Title: Ruby Blocks Are Way More Complicated Than You Think
 Posted: 2012-11-22T05:42:00Z
 Tags:
-  ruby
+    ruby
 Slug: ruby-blocks-are-way-more-complicated-than-you-think
 I've been working with Ruby a lot lately, and it's impossible to do that very much without noticing how feature-rich the language is. Today I journeyed deep into the strange and wonderful world of blocks. Blocks are used heavily in Ruby, and although they look like the simple anonymous functions I'm used to in JavaScript, their semantics are [significantly more sophisticated](http://yehudakatz.com/2010/02/07/the-building-blocks-of-ruby/). Most relevant to us today is that a function that receives a block doesn't take it as an explicit parameter. Instead, it checks `block_given?` to see if the caller provided a block. In JavaScript we might write:
 

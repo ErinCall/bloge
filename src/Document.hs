@@ -5,10 +5,13 @@
 module Document (
     Tag,
     Document(..),
+    insertDoc,
     parse,
     parseFile,
   ) where
 
+import           Data.HashMap                  (Map, alter)
+import           Data.Maybe                    (fromMaybe)
 import           Data.Time.Clock
 import qualified Data.Text                     as T
 import qualified Data.Text.Lazy                as L
@@ -54,3 +57,10 @@ parse' filename = P.parse document filename
       dBody <- body
       eof
       return Document {..}
+
+type DocMap = Map T.Text [Document]
+
+insertDoc :: Document -> DocMap -> DocMap
+insertDoc d h = foldr insertMe h $ dTags d
+  where
+    insertMe tag hash = alter (\l -> Just $ d : fromMaybe [] l) tag hash

@@ -5,5 +5,8 @@
   </section>
   <div class="meta">
     <div>Posted on <span class="dateTime"><postPostedDate/></span></div>
+    <div>
+      <tagListing/>
+    </div>
   </div>
 </article>
