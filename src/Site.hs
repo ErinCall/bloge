@@ -35,7 +35,7 @@ routes = [ ("/",           ifTop index)
          ]
 
 app :: [Document] -> SnapletInit App App
-app docs = makeSnaplet "app" "An snaplet example application." Nothing $ do
+app docs = makeSnaplet "bloge" "Such posts, many tags, very markdown" Nothing $ do
     h <- nestSnaplet "" heist $ heistInit "templates"
     let config = mempty {
         hcInterpretedSplices = do
