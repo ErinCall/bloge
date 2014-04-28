@@ -119,8 +119,8 @@ getConf = commandLineAppConfig defaultConfig
 -- sophisticated code might.
 getActions :: Config Snap AppConfig -> IO (Snap (), IO ())
 getActions conf = do
-    (documentPath:_) <- getArgs
-    docs <- getDocuments documentPath
+    arguments <- getArgs
+    docs <- getDocuments $ last arguments
     (msgs, site, cleanup) <- runSnaplet
         (appEnvironment =<< getOther conf) $ app docs
     hPutStrLn stderr $ T.unpack msgs
