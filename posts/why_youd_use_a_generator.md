@@ -3,7 +3,7 @@ Posted: 2012-07-18T06:19:00Z
 Slug: oh-so-thats-why-youd-use-a-generator
 Tags:
     python
-So, I've been working on this [catsnap](https://github.com/AndrewLorente/catsnap) project of mine, improving the performance. The big problem is that it's spending an enormous amount of time on the wire, waiting to get information back from AWS. For example, when searching for images by tag, my first pass used a pretty naïve approach: loop through the images associated with a tag, asking DynamoDB about each one. Fortunately, the excellent [boto](http://boto.cloudhackers.com/en/latest/index.html) library for interacting with aws has a batched lookup mode that lets me grab all the images at once.
+So, I've been working on this [catsnap](https://github.com/AndrewLorente/catsnap) project of mine, improving the performance. The big problem is that it's spending an enormous amount of time on the wire, waiting to get information back from AWS. For example, when searching for images by tag, my first pass used a pretty na&#239;ve approach: loop through the images associated with a tag, asking DynamoDB about each one. Fortunately, the excellent [boto](http://boto.cloudhackers.com/en/latest/index.html) library for interacting with aws has a batched lookup mode that lets me grab all the images at once.
 
 Only...not quite. DynamoDB has this thing going on where if you ask for some items, it'll give some or all of them back.[1] It's polite enough to tell you which keys it ignored, but you still have to ask for them again if you really wanted what you said you wanted.
 
