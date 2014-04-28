@@ -6,6 +6,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/posts.atom" type="application/atom+xml" rel="alternate" title="Posts feed">
   </head>
   <body>
     <div class="content">
@@ -28,6 +29,7 @@
       <div>
         Site by Andrew Lorente. All content is <a href="https://creativecommons.org/licenses/by-sa/4.0/">licensed Creative Commons Share-Alike.</a>
         <a href="http://validator.w3.org/check?uri=${currentPath}"><i class="fa fa-html5"></i></a>
+        <a href="/posts.atom"><i class="fa fa-rss"></i></a>
       </div>
     </footer>
     <script src="/static/js/jquery-2.1.0.min.js"></script>
