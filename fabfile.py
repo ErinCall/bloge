@@ -10,7 +10,7 @@ env.hosts = ['andrewlorente.com']
 def deploy():
     release_id = datetime.now().strftime("%Y%m%d%H%M%S")
     execute(build, release_id)
-    release(release)
+    execute(release)
 
 @roles('webuser')
 def build(release_id):
@@ -26,6 +26,6 @@ def build(release_id):
         "/u/apps/bloge/current".format(release_id))
 
 @roles('sudoer')
-def release(*args):
+def release():
     sudo("initctl restart bloge")
 
