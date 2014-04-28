@@ -28,6 +28,7 @@ import           System.IO
 import           Site
 import           Document
 import           System.FilePath.Find
+import           System.Environment   (getArgs)
 
 #ifdef DEVELOPMENT
 import           Snap.Loader.Dynamic
@@ -84,9 +85,9 @@ main = do
     cleanup
 
 
-getDocuments :: IO [Document]
-getDocuments = do
-  postFiles <- find (return True) (extension ==? ".md") ("/Users/andrewlorente/code/bloge/posts/")
+getDocuments :: String -> IO [Document]
+getDocuments docPath = do
+  postFiles <- find (return True) (extension ==? ".md") docPath
   docs <- mapM parseFile postFiles
   return $ reverse $ sortOn dPosted $ map (forceEither) docs
 
@@ -118,7 +119,8 @@ getConf = commandLineAppConfig defaultConfig
 -- sophisticated code might.
 getActions :: Config Snap AppConfig -> IO (Snap (), IO ())
 getActions conf = do
-    docs <- getDocuments
+    (documentPath:_) <- getArgs
+    docs <- getDocuments documentPath
     (msgs, site, cleanup) <- runSnaplet
         (appEnvironment =<< getOther conf) $ app docs
     hPutStrLn stderr $ T.unpack msgs
