@@ -1,4 +1,5 @@
 Title: Sorry Brogramming, I Gotta Cut You Loose
+DisqusId: 11
 Posted: 2012-03-23T13:29:00Z
 Tags:
     feminism

@@ -1,4 +1,5 @@
 Title: Python's Scoping System Will Hurt You If You Let It
+DisqusId: 2
 Slug: pythons-scoping-system-will-hurt-you-if-you-let-it
 Posted: 2012-01-10T04:57:00Z
 Tags:

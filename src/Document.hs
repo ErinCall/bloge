@@ -28,11 +28,12 @@ instance Eq Html where
   a == b = (renderHtml a == renderHtml b)
 
 data Document = Document {
-    dTitle  :: T.Text
-  , dSlug   :: T.Text
-  , dPosted :: UTCTime
-  , dTags   :: [ Tag ]
-  , dBody   :: Html
+    dTitle    :: T.Text
+  , dSlug     :: T.Text
+  , dDisqusId :: T.Text
+  , dPosted   :: UTCTime
+  , dTags     :: [ Tag ]
+  , dBody     :: Html
 } deriving (Eq)
 instance Show Document where
   show d = T.unpack $ T.unlines $ map ($ d)
@@ -50,10 +51,13 @@ parse' :: String -> String -> Either ParseError Document
 parse' filename = P.parse document filename
   where
     document = do
-      (dTitle, mSlug, dPosted, dTags) <- fields
+      (dTitle, mSlug, mDisqusId, dPosted, dTags) <- fields
       let dSlug = if T.null mSlug
                   then slugify dTitle
                   else mSlug
+          dDisqusId = if T.null mDisqusId
+                      then dSlug
+                      else mDisqusId
       dBody <- body
       eof
       return Document {..}

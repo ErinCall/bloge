@@ -1,5 +1,6 @@
 Title: Wanker News!
 Posted: 2012-02-03T06:55:00Z
+DisqusId: 5
 Slug: wanker-news
 Tags:
     rails

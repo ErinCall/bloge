@@ -1,4 +1,5 @@
 Title: I Have Beef With How Git Push Is Taught
+DisqusId: 25
 Posted: 2014-01-10T22:41:00Z
 Tags:
     git

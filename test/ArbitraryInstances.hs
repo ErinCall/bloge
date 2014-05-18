@@ -40,6 +40,7 @@ instance Arbitrary Document where
   arbitrary = do
     dTitle <- arbitrary
     dPosted <- arbitrary
+    dDisqusId <- arbitrary
     dTags <- arbitrary
     dSlug <- arbitrary
     dBody <- arbitrary

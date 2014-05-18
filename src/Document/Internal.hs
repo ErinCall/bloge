@@ -15,15 +15,16 @@ import           Text.Markdown         (markdown, MarkdownSettings(..))
 import           Text.Parsec
 import           Text.Parsec.Perm
 
-type Fields = (T.Text, T.Text, UTCTime, [T.Text])
+type Fields = (T.Text, T.Text, T.Text, UTCTime, [T.Text])
 
 fields :: ParsecT String u Identity Fields
 fields  = permute (tuple <$$> title
                          <|?> ("", slug)
+                         <|?> ("", disqusId)
                          <||> posted
                          <|?> ([], tags))
       where
-        tuple a b c d = (a, b, c, d)
+        tuple a b c d e = (a, b, c, d, e)
 
 title :: ParsecT String u Identity T.Text
 title = fmap T.pack $ try $ (string "Title: ") >> singleLine
@@ -34,6 +35,9 @@ slug = try $ do
   let slugChar = alphaNum <|> char '-' <|> char '_'
                  <?> "URL-friendly string: alphanumerics, -, or _"
   fmap T.pack $ manyTill slugChar (char '\n')
+
+disqusId :: ParsecT String u Identity T.Text
+disqusId = fmap T.pack $ try $ (string "DisqusId: ") >> singleLine
 
 posted :: ParsecT String u Identity UTCTime
 posted = try $ do

@@ -1,4 +1,5 @@
 Title: Bike Camping!
+DisqusId: 14
 Posted: 2012-07-17T05:22:00Z
 Slug: bike-camping
 Tags:

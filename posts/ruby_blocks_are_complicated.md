@@ -1,4 +1,5 @@
 Title: Ruby Blocks Are Way More Complicated Than You Think
+DisqusId: 16
 Posted: 2012-11-22T05:42:00Z
 Tags:
     ruby

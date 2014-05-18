@@ -1,4 +1,5 @@
 Title: Annotation Station: hanke.py
+DisqusId: 3
 Slug: annotation-station-hanke-py
 Posted: 2012-01-17T06:59:00Z
 Tags:

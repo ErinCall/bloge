@@ -1,4 +1,5 @@
 Title: And The Asset Pipeline Is So Enticing!
+DisqusId: 9
 Posted: 2012-03-04T04:59:00Z
 Tags:
     rails

@@ -1,5 +1,6 @@
 Title: The Splinter Mystery
 Slug: the-splinter-mystery
+DisqusId: 20
 Posted: 2013-08-10T17:42:00Z
 Tags:
     python

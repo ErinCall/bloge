@@ -1,5 +1,6 @@
 Title: Unreserved Praise For Patrick Rothfuss
 Posted: 2012-06-25T03:41:00Z
+DisqusId: 13
 Tags:
     books
 Slug: unreserved-praise-for-patrick-rothfuss

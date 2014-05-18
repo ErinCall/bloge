@@ -27,6 +27,7 @@ testGroups = [
     , testCase "Tag declaration may be omitted" test_omit_tag_field
     , testCase "declarations can be in any order" test_parse_in_any_order
     , testCase "infer the slug from the title" test_infer_slug_from_title
+    , testCase "infer the disqus id from the slug" test_infer_disqus_id_from_slug
     , testCase "markdown in the body is rendered as html" test_render_markdown
     ]
   , testGroup "Field parsing errors" [
@@ -45,6 +46,7 @@ test_parse_simple_doc = do
             "Title: Whoa Mama!"
           , "Slug: whoa-mama"
           , "Posted: 2014-03-28T06:50:30-0700"
+          , "DisqusId: 8"
           , "Tags:"
           , "    partying"
           , "    drinkin'"
@@ -58,6 +60,7 @@ test_parse_simple_doc = do
           , dSlug = "whoa-mama"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = ["partying", "drinkin'", "socializing"]
+          , dDisqusId = "8"
           , dBody = markdown def "Party at my place!\nWe will have fun.\n"
         }
 
@@ -78,6 +81,7 @@ test_parse_in_any_order = do
     let parseResult = parse $ intercalate "\n" [
             "Posted: 2014-03-28T06:50:30-0700"
           , "Title: I'm a friggin rebel"
+          , "DisqusId: rebellion"
           , "Tags:"
           , "Slug: any-order-i-want"
           , "You cannot pin me down with your REGULATIONS"
@@ -86,6 +90,7 @@ test_parse_in_any_order = do
         doc = Document {
             dTitle = "I'm a friggin rebel"
           , dSlug = "any-order-i-want"
+          , dDisqusId = "rebellion"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
           , dBody = markdown def "You cannot pin me down with your REGULATIONS"
@@ -97,6 +102,7 @@ test_infer_slug_from_title = do
     let parseResult = parse $ intercalate "\n" [
               "Title: This! Is! Spartaaaaaa!"
             , "Posted: 2014-03-28T06:50:30-0700"
+            , "DisqusId: 8"
             , "Tags:"
             , "Madness?"
             , "<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />"
@@ -104,6 +110,19 @@ test_infer_slug_from_title = do
             ]
 
     fmap dSlug parseResult @?= (Right "this-is-spartaaaaaa")
+
+test_infer_disqus_id_from_slug = do
+    let parseResult = parse $ intercalate "\n" [
+              "Title: This! Is! Spartaaaaaa!"
+            , "Posted: 2014-03-28T06:50:30-0700"
+            , "Slug: this-is-spartaaaaaa"
+            , "Tags:"
+            , "Madness?"
+            , "<img src='https://d5hwde6hzncg6.cloudfront.net/df0e2fa0dfbce52b75bdba41caf01a9551881237' />"
+            , ""
+            ]
+
+    fmap dDisqusId parseResult @?= (Right "this-is-spartaaaaaa")
 
 test_render_markdown = do
   let parseResult = fmap renderHtml $ P.parse body "" "[click here for wonder](https://andrewlorente.com)\n"

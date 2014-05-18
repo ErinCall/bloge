@@ -1,5 +1,6 @@
 Title: What do you think of this mailing-list message?
 Posted: 2014-02-24T20:22:00Z
+DisqusId: 26
 Slug: what-do-you-think-of-this-mailing-list-message
 Tags:
     bike

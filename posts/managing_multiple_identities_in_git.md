@@ -1,4 +1,5 @@
 Title: Managing Multiple Identities In Git
+DisqusId: 18
 Slug: managing-multiple-identities-in-git
 Tags:
     git

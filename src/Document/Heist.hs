@@ -39,6 +39,7 @@ documentSplices :: Monad n => Document -> Splices (I.Splice n)
 documentSplices d = do
   "postTitle"      ## I.textSplice (dTitle d)
   "postSlug"       ## I.textSplice (dSlug d)
+  "postDisqusId"   ## I.textSplice (dDisqusId d)
   "postPostedDate" ## postedSplice d
   "postBody"       ## I.runNodeList $ X.docContent $ X.renderHtml $ dBody d
   "xmlPostContent" ## I.runNodeList

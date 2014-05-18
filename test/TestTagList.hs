@@ -41,6 +41,7 @@ test_overlapping_tags = do
 blankDoc = Document
   { dTitle = ""
   , dSlug = ""
+  , dDisqusId = ""
   , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
   , dTags = []
   , dBody = ""

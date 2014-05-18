@@ -1,5 +1,6 @@
 Title: Oh, So That's Why You'd Use A Generator
 Posted: 2012-07-18T06:19:00Z
+DisqusId: 15
 Slug: oh-so-thats-why-youd-use-a-generator
 Tags:
     python

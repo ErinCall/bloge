@@ -1,5 +1,6 @@
 Title: Triple-Equals In Javascript
 Posted: 2012-02-22T06:20:00Z
+DisqusId: 7
 Tags:
     javascript
     bugs

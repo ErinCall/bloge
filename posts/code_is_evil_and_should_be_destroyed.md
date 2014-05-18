@@ -1,4 +1,5 @@
 Title: Code Is Evil And Should Be Destroyed
+DisqusId: 1
 Slug: code-is-evil-and-should-be-destroyed
 Posted: 2012-01-03T03:13:00Z
 Tags:

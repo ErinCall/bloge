@@ -1,4 +1,5 @@
 Title: I Don't Get The Concept Of Microaggressions
+DisqusId: 22
 Posted: 2013-10-18T05:19:00Z
 Slug: i-dont-get-the-concept-of-microaggressions
 Tags:

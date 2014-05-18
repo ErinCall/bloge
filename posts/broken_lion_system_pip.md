@@ -1,4 +1,5 @@
 Title: The System Pip On Lion Is Completely Broken??
+DisqusId: 6
 Slug: the-system-pip-on-lion-is-completely-broken
 Tags:
     python
