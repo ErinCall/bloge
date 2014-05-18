@@ -20,8 +20,8 @@ import qualified Data.Text                     as T
 import qualified Data.Text.Encoding            as T
 import qualified Data.Text.Lazy                as T (toStrict)
 import           Data.Time.ISO8601             (formatISO8601)
-import           Text.Blaze.Renderer.XmlHtml   as X (renderHtml)
-import           Text.Blaze.Html.Renderer.Text as T (renderHtml)
+import qualified Text.Blaze.Renderer.XmlHtml   as X (renderHtml)
+import qualified Text.Blaze.Html.Renderer.Text as T (renderHtml)
 import qualified Text.XmlHtml                  as X
 import           Application
 import           Document
