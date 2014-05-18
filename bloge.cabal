@@ -26,6 +26,7 @@ Executable bloge
     blaze-html                >= 0.7     && < 0.8,
     blaze-markup              >= 0.6     && < 0.7,
     bytestring                >= 0.9.1   && < 0.11,
+                              -- Careful! This will fetch containers-0.4 on production and -0.5 in dev!
     containers                >= 0.4     && < 0.6,
     data-default              >= 0.5     && < 0.6,
     filemanip                 >= 0.3     && < 0.4,
