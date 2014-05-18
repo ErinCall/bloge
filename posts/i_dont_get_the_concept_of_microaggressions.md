@@ -4,7 +4,7 @@ Posted: 2013-10-18T05:19:00Z
 Slug: i-dont-get-the-concept-of-microaggressions
 Tags:
     feminism
-*Update*: "wilkie" has knocked it out of the park with a thorough [explanation in the comments](#comment-1086823065). Make sure you check it out!
+*Update*: "wilkie" has knocked it out of the park with a thorough [explanation in the comments](/p/i-dont-get-the-concept-of-microaggressions#comment-1086823065). Make sure you check it out!
 
 This post involves a discussion of two people, "Rita" and "Bastian," whose identities I've chosen to obfuscate. An astute reader will be able to divine their identities. A _responsible_ reader will choose not to do so. I invite you to be responsible.
 
