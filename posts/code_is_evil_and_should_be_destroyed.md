@@ -9,7 +9,7 @@ Tags:
     dry
 Writing code, while sometimes necessary, is inescapably evil. Yes, deploying an empty directory to production will be ineffective. Yes, most version control systems are so obstinate that they won't even accept an empty directory, and, ok, all right, I'll admit that perhaps if we intend to have features, we'll need to write some code at some point. However, it is completely unavoidable that this code will have bugs! *Completely unavaidable*. All code has bugs. There's a reason second-language learners often practice verb conjugation with the sentence "Your code/my code/his/her/its code has bugs."
 
-# So what can we do? It's simple: we kill as much code as we can possibly lose.
+### So what can we do? It's simple: we kill as much code as we can possibly lose.
 
 First of all, get acquainted with your Eastern European friend, [Yagni](http://www.globalnerdy.com/2008/12/05/it-looks-like-youre-trying-to-stank-up-your-code-would-you-like-some-help/). If you're adding code and you don't know, with absolute certainty, that you're going to need it, you're gambling on the chance of later ease with the certainty of bugs and lost development time.
 

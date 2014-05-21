@@ -2,7 +2,7 @@
    padding-left: 10%;
    padding-right: 10%;
    font-size: 1.25em;
-   line-height: 1.25em;
+   line-height: 1.5em;
    margin-right: auto;
    margin-left: auto;
 }
@@ -23,7 +23,7 @@ article {
    border-radius: 15px;
 }
 
-h3 {
+h2 {
    padding-top: 10px;
 }
 
@@ -47,11 +47,11 @@ a:hover {
 header {
    min-height: 145px; /* The height of header.png, plus 1px for the border */
    border-bottom: 1px solid black;
-   font-family: Georgia, Times New Roman, serif;
 }
 
 body {
    background-color: #DAEFD6;
+   font-family: Georgia, Times New Roman, serif;
 }
 
 article {

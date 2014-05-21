@@ -4,7 +4,7 @@ Posted: 2012-03-23T13:29:00Z
 Tags:
     feminism
 Slug: sorry-brogramming-i-gotta-cut-you-loose
-# Nerds
+### Nerds
 
 Let us begin at the beginning. Most programmers were probably not the cool kids. By and large, we were the fringe kids: futzing around with computers and reading sci-fi, rather than working on our rushing game.
 
@@ -20,7 +20,7 @@ It's understandable: Having gotten away from the "cool kids" who'd hurt us in on
 
 The pervasiveness of these negatively-oriented traits was a matter of some frustration for me. I really like to ride a bike! I think of my body as a tool, and one that it behooves me to hone. It actually turns out that athletic pursuits made me a better programmer, as well--more focused, more energized. It was weird to catch flak for that.
 
-# Brogramming!
+### Brogramming!
 
 I welcomed the "brogramming" notion with open arms. To me, it was a rejection of some problematic negatively-oriented traits. Yes, there were some troubling associations, but I saw them as mostly [tongue in cheek](https://twitter.com/#!/brodotjs). The unabashed adoption of self-improvement charmed me.
 

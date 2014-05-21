@@ -1,4 +1,4 @@
-<h3><a href="/p/${postSlug}"><postTitle/></a></h3>
+<h2><a href="/p/${postSlug}"><postTitle/></a></h2>
 <section class="post-body">
   <postBody/>
 </section>
