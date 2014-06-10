@@ -10,7 +10,7 @@ The National Museum was something of a disappointment. The main building was clo
 
 The Museum Of Communism was much better. Historical exhibits provided information about the rise of Czech communism in the wake of Nazi withdrawl, through the Velvet Revolution of 1989, when the communist government acceeded to peaceful protests' demands and stepped down from single-party rule.
 
-An hour or so of reading about secret police and shoot-on-sight border zones, I felt pretty ready for some American-style capitalism, so I went to McDonald's and got a Coca-Cola:
+After an hour or so of reading about secret police and shoot-on-sight border zones, I felt pretty ready for some American-style capitalism, so I went to McDonald's and got a Coca-Cola:
 
 ![USA! USA!](https://cdn.andrewlorente.com/1f8326a545b7931c278c65a3498f0fb472ed46ee_small)
 
