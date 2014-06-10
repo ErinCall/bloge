@@ -72,3 +72,12 @@ footer {
 footer div {
    border-top: 1px solid black;
 }
+
+h4 {
+   font-weight: bold;
+}
+
+blockquote {
+   font-size: 0.9em;
+   line-height: 0.9em;
+}
