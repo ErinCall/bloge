@@ -66,7 +66,7 @@ Now we've gone beyond simply verifying that the text our expression describes is
 
 Suppose that instead of operating a soulless call center, we're cautious custodians of our users' data. We've decided that, in order to help safeguard them, we're going to X out any phone numbers from our log files. That way, those jerks from the last example can't get ahold of it and steal our users' data...
 
-```
+```Ruby
 sanitized_line = log_line.gsub(/\(?\d{3}\)?[.\- ]?\d{3}[.\- ]?\d{4}/, 'XXX-XXX-XXXX')
 log_file.write(sanitized_line)
 ```
