@@ -6,6 +6,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/static/css/screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/static/css/espresso-libre.css" rel="stylesheet" type="text/css" media="screen">
     <link href="/posts.atom" type="application/atom+xml" rel="alternate" title="Posts feed">
   </head>
   <body>
@@ -35,5 +36,7 @@
     <script src="/static/js/jquery-2.1.0.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/localize-times.js"></script>
+    <script src="/static/js/rainbow.min.js"></script>
+    <script src="/static/js/rainbow-integrate.js"></script>
   </body>
 </html>
