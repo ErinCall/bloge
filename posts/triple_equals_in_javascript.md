@@ -56,14 +56,16 @@ JavaScript, however, has learned a few tricks since those early languages were a
 
 Unfortunately, JavaScript's rules for type coercion are broken. As you recall from math class, one of [the very important rules for equality](http://en.wikipedia.org/wiki/Equivalence_relation) is that it needs to be _transitive_: if `a = b` and `b = c`, then `a = c`. However, because of the way JavaScript coerces types, this is not the case. Let's check it out, using the string `"0"` for our `a`, the number `0` for our `b`, and the string `""`--a string containing nothing at all--for our `c`.
 
-> `"0" == 0`
-`true`
+```
+"0" == 0
+true
 
-bq. `0 == ""`
-`true`
+0 == ""
+true
 
-bq. `"0" == ""`
-`false`
+"0" == ""
+false
+```
 
 Aaaaaa what just happened? Well, JavaScript gave us just enough rope to hang ourselves. A couple minutes ago, we earnestly wanted it to use the number represented by a string when comparing that string to a number. So when we compared `"0"` to `0`, it obligingly said "yep, they're equal."
 
