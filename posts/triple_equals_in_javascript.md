@@ -15,8 +15,10 @@ x = 5;
 
 Now any time the variable `x` is referenced, the expression referencing it will operate on the value `5`. You'll recall this from algebra, of course:
 
-> `x = 5`
-`f(x) = 3 + x^2`
+```
+x = 5
+f(x) = 3 + x^2
+```
 
 That whole system evaluates to 28. If `x` were 3, or 17.2, it would evaluate to something else. Variables in software work the same way[2].
 
