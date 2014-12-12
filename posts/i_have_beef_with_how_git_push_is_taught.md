@@ -10,6 +10,8 @@ Pretty much [every](http://try.github.io/levels/1/challenges/11) [git](http://gi
 
 That's false! The syntax of the command is `git push <remote> <local-ref>:<remote-branch>`. You can omit some of the keywords, and their values will be inferred in various ways. And in fact, it's extremely common to omit the `local-ref` and colon, leaving the command looking the way tutorials claim it always looks.
 
+----------8<-----------------
+
 The [official git docs](http://git-scm.com/docs/git-push.html) get it right, of course, but they're totally inaccessible to a beginner (or, well, anyone who isn't a git maintainer themselves). No help there.
 
 You might wonder if it's all that important. After all, how often do you really need to use the fully-explicated form? You'd be right, to a point. The only time you really need to specify both the local ref and the remote branch is when you want to push a local branch to some remote branch with a different name. Problem is, when the tutorials don't explain that another form of the command even exists, then someone who needs the full form don't know to look for it. On several occasions, I've talked to people who did something like:

@@ -10,6 +10,8 @@ Let us begin at the beginning. Most programmers were probably not the cool kids.
 
 When we came of age and started working together, we were excited to find ourselves on the inside. I clearly remember how thrilled I was at my first Real Job when I realized I could make offhand references to Admiral Thrawn or whatever, and everyone in earshot would get what I was saying. So it's natural that we formed our own tribe. This wasn't [Revenge Of The Nerds](http://www.imdb.com/title/tt0088000/), where the nerds win by adopting mainstream norms. This was nerds living well on their own terms.
 
+--------8<------------
+
 Of course, once you have a tribe, you'll start to have shibboleths. It's an integral part of human society: you want to know if someone's a member of the group, so you know if you can trust them. The heuristic isn't actually all that good, but it seems to be hardwired.
 
 Some of the identifying traits were positively-oriented: defining the group in terms of what its members _are_. Programmers know at least one programming language. Programmers have a favorite editor. Programmers are upset about the Star Wars prequels.

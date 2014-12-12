@@ -7,6 +7,8 @@ Tags:
     annotation station
 A week or so ago, I annotated a chunk of code for a co-worker who was complaining that open-source did him little good if he didn't understand the language. I was surprised--and pleased--to find that I learned a lot from the exercise myself. I resolved immediately to do it some more. This is the first in what will be several trillion annotated chunks of code.
 
+----------8<-----------
+
 This is a python script written to convert between Gregorian (you may know them as 'normal') dates and dates in the [Hanke-Henry calendar](http://henry.pha.jhu.edu/calendar.html). It is written by github user [elsewherean](https://github.com/elsewherean).
 
 The Hanke-Henry calendar is a bad idea. It isn't clear what problems it solves, but the many problems inherent in switching to a whole new calendar system are evident. However, we can still have fun and learn something from analyzing elsewherean's code. Let's get to it, shall we?

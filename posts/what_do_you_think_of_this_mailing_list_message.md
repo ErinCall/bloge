@@ -7,6 +7,8 @@ Tags:
     email
 I've been subscribed to the email list for Cascade Bicycle Club since I signed up for the Seattle To Portland Bicycle Classic last year. This morning they sent me an email from the "Bike Bot":
 
+-----8<-----------
+
 > Hi Andrew --
 
 > Let me introduce myself. I'm Bike "I'm smarter than you" Bot, the Director of Cascade's Intelligence Agency.

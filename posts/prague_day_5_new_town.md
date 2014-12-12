@@ -6,6 +6,8 @@ Thursday was a good day to visit Prague's New Town. Although it's new by compari
 
 By this point I'd burst a blister on my foot and wasn't moving too fast. Still, I had time to visit the National Museum as well as the Museum Of Communism. I eventually made it down the river a ways to see the Dancing House, as well.
 
+----------8<-----------------
+
 The National Museum was something of a disappointment. The main building was closed for renovations, and the auxiliary building only had a single exhibit open, about the history and social structures of money. It was ok, but not great.
 
 The Museum Of Communism was much better. Historical exhibits provided information about the rise of Czech communism in the wake of Nazi withdrawl, through the Velvet Revolution of 1989, when the communist government acceeded to peaceful protests' demands and stepped down from single-party rule.

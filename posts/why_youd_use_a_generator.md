@@ -8,6 +8,8 @@ So, I've been working on this [catsnap](https://git.andrewlorente.com/AndrewLore
 
 Only...not quite. DynamoDB has this thing going on where if you ask for some items, it'll give some or all of them back.[1] It's polite enough to tell you which keys it ignored, but you still have to ask for them again if you really wanted what you said you wanted.
 
+-----8<-----------
+
 The obvious, hamfisted solution is to check and see if there were any "unprocessed keys," and go fetch those, and then check again, until we've finally gotten everything we wanted in the first place, and finally return. That leaves the user twiddling their thumbs, waiting on all those requests.
 
 So instead I built [a generator](https://git.andrewlorente.com/AndrewLorente/catsnap/blob/batched-requests/catsnap/batch/image_batch.py#L26) that immediately starts yielding whatever it has, and then goes back for more if anything is missing. It makes for a nice, snappy-feeling app.

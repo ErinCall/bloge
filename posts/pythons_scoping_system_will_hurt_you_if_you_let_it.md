@@ -15,6 +15,8 @@ print x
 
 Depending on the return value of `some_function`, this code may or may not execute successfully. Whether or not it happens to succeed, though: it's wrong. You have this exception sitting there, waiting to jump up and bite you. It is a problem waiting to happen. Python doesn't care, though! It will happily accept that code and let you catch the error in production. But why? Why doesn't Python just define a new lexical scope when entering an `if` or `for` block? Then it could tell you during compile-time that your code is wrong, and you could fix it before it ever screwed you up.
 
+----------8<-----------------
+
 So, as is my wont, I groused on IRC, and the nice people there taught me some surprising and upsetting things about Python's scoping. It turns out it's not nearly that simple. Here, let's look at some closures.
 
 `closures.rb`:

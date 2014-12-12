@@ -7,6 +7,8 @@ Tags:
 Slug: triple-equals-in-javascript
 [Molly wants to know what `===` means in JavaScript](https://twitter.com/#!/mollyn/status/172187789637586945), so I thought I'd write it up, from as close to first principles as my brain can think about. Fun!
 
+--------8<------------
+
 Most programming languages use the `=` operator for variable assignment [1]:
 
 ```  JavaScript

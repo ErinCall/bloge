@@ -9,6 +9,8 @@ A beta version of Catsnap 3.0 is now available. 3.0 introduces a major architect
 
 You'll need to run the server code somewhere. The instructions below assume you're using a VPS or EC2. However, you could also run catsnap on your personal computer, or a managed service like [Heroku](http://www.heroku.com/). In any case, you'll need to create a postgres database for Catsnap to use. First-time Catsnap users will also need to [create an S3 bucket](http://docs.amazonwebservices.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
+----------8<-----------------
+
 Deploying the 3.0 server is fairly straightforward. You'll need to set several environment variables:
 * CATSNAP_API_KEY is a secret key the client and server share for authentication. It can be any string of characters.
 * CATSNAP_AWS_ACCESS_KEY_ID and CATSNAP_AWS_SECRET_ACCESS_KEY: your AWS credentials.

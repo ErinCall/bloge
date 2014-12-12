@@ -8,7 +8,9 @@ For the last few days I've been eating, breathing, and sleeping a new project. C
 
 The "Rad" in "radlibs" comes from its recursive nature: category-members may also be phrasal templates. Thus, with the right libraries Radlibs can generate some good clean fun:
 
-[![crate and barrel](https://d5hwde6hzncg6.cloudfront.net/439301aa34325e767a339d3edfa340e4528c78ff_medium)](https://d5hwde6hzncg6.cloudfront.net/439301aa34325e767a339d3edfa340e4528c78ff)
+[![crate and barrel](https://cdn.andrewlorente.com/439301aa34325e767a339d3edfa340e4528c78ff_medium)](https://cdn.andrewlorente.com/439301aa34325e767a339d3edfa340e4528c78ff)
+
+----------8<-----------------
 
 I'm very proud of what I've made, but I'd be remiss if I didn't mention its influences. Many years ago when I worked at Rentrak, a few developers there generated a post-test hook called game.pl that would simulate a random encounter in a dungeon crawl, with the outcome based on whether your tests had passed or failed. Game.pl was built from the most monstrous regular expression you've ever seen (or maybe not--there's always a regex more monstrous), using perl's `/e` regex to implement recursion and branching. Another developer later open-sourced game.pl as [Legendary Flavor](https://github.com/wickline/legendary_flavor), but it hasn't seen much development since then. You can think of Radlibs as an homage, a port, or a resurrection effort.
 

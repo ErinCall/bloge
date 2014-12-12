@@ -8,6 +8,8 @@ So, this problem has a trivial solution, right? Just [make a CNAME](http://www.p
 
 Fortunately, the [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) extension to TLS offers a fix for this, and since March 2014, Cloudfront supports it. Let's get into setting it up!
 
+--------8<------------
+
 ### Generate a private key and CSR
 
 Amazon requires you to upload the private key you'll use, so I think you should assign a specific key to your CDN. I have a wildcard certificate I could use for my cdn domain, but distributing private keys to anyone--even an entity as reputable as Amazon--is a bad idea, so let's generate a fresh public/private key pair to use with Amazon. Run these commands (you may have to install openssl):

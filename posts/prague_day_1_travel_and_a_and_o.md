@@ -6,6 +6,8 @@ I took a trip to Prague! I've been wanting to visit Europe for some time, and Pr
 
 Wow, when I write it out like that, it sounds incredibly ghoulish. Let's say instead that it preserves tangible remembrances of Europe's history, and change the subject.
 
+----------8<-----------------
+
 My trip was marred by problems that ranged from inconvenience to disaster, and they kicked off at the airport before I even left Portland. After we boarded the plane we sat motionless for about 10 minutes, before the pilot announced that the ground crew had run some equipment into the plane, denting it badly enough that the engineers wouldn't clear it to fly, which was inconvenient for the passengers, and disastrous for whoever had to explain to their boss why they broke an $85,000,000 plane. We all filed sullenly off the plane and started making calls to reschedule our flights. I got a new flight set up, and everything seemed fine.
 
 Many hours later, tired and smelly, I arrived at Vaclav Havel Airport outside Prague, went to the bag check, and waited. And waited. Finally I went and talked to the baggage desk, where I learned that not only was my bag not in Prague, there was no way to know where it actually was. I was furious: misplacing the bag is a simple mistake, but the lack of a tracking system seemed (and seems) ridiculously incompetent. I was also mad at myself, because I'd packed my critically-important medicine in my checked bag. Being without it is really rough--not only does my depression resume eagerly, the [withdrawal symptoms](http://en.wikipedia.org/wiki/Venlafaxine#Discontinuation_syndrome) include weakness, lightheadedness, and problems regulating my heartrate.

@@ -8,6 +8,8 @@ Problem is, all that romance is inextricably tied to the genocide of the Native 
 
 I recently finished [The Incorruptibles](http://smile.amazon.com/Incorruptibles-John-Hornor-Jacobs-ebook/dp/B00JEIPHOI/ref=sr_1_2), by John Hornor Jacobs. I'm sorry to say that it makes the Native Americans into terrible creatures, ones with whom there is no possibility of dialogue or compromise.
 
+--------8<------------
+
 _The Incorruptibles_ is an alternate-history / high-fantasy story. The Ruman empire, which is like the Roman empire but spelled funny, has survived into the Western expansion. Tensions with Mediera (Spain, basically) and the Autumn Lords (China) are high. Our protagonist is Shoestring, a half-dwarven mercenary who won't carry the Hellfire-powered sixguns carried by his colleagues.
 
 Shoestring's characterization fits nicely into the lonely setting. Dwarves are hardly unheard-of, but they're uncommon and of low status. His human side keeps him from fitting in with other dwarves, while his dwarven heritage holds him back among humans. Layered on top of that is his religious horror of the demon-powered artifice so common among the Rumans. His supporting cast have vibrant personalities that really shine as their individual goals start to clash.

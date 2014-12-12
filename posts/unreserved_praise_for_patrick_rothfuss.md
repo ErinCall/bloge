@@ -6,6 +6,8 @@ Tags:
 Slug: unreserved-praise-for-patrick-rothfuss
 p. Lately I've been geeking out about _The Name Of The Wind_ with friends, so I went in for a re-read. I was immediately struck by how _dense_ the opening chapters are, laying out themes and setting up later events. I'm gonna take a few minutes to blather at you about how much I like them.
 
+-----8<-----
+
 Let us, as Arliden would demand, begin at the beginning. The first sentence in the prologue is "It was night again." Again? It's the first sentence! Of the _prologue_! It's a dreary start, better suited to some existential philosophical discourse than the tale of excitement the back-cover blurb promised us. But this is a tragedy, as we'll see in the prologue's last sentence. There're fireworks in the middle, but at the end it's the story of a man who is waiting to die.
 
 After the prologue, though, things are a little more what you'd expect. We open in a tavern, the sort where a D&D party might begin their adventure. Old Cob is telling a story of Taborlin The Great to a small crowd: his friends Jake, Shep, and Graham, along with the smith's apprentice. Immediately Rothfuss introduces the Chandrian, and the story-within-a-story motif that's gonna recur and recur, and the theme of "old stories, corrupted by time, but with a kernel of truth." We see Kvothe think of the Chandrian as "familiar." This is all in the first half-page of chapter one.

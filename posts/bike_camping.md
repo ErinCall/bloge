@@ -6,7 +6,9 @@ Tags:
     bike
 I've wanted to go bike touring for some time, and I figured a good starting place was to go camping near home. On Friday afternoon I went to [Champoeg State Park](https://www.oregonstateparks.org/park_113.php/), which turns out to be fantastic!
 
-The [route](https://www.bikely.com/maps/bike-path/Portland-to-Champoeg-State-Park-Route-A) I took was about 35 miles, which is quite a ways with a heavily-laden bike! The poundng heat didn't help, either. As you can imagine I was pretty glad to arrive:
+The [route](https://www.bikely.com/maps/bike-path/Portland-to-Champoeg-State-Park-Route-A) I took was about 35 miles, which is quite a ways with a heavily-laden bike! The poundng heat didn't help, either. As you can imagine I was pretty glad to arrive!
+
+----------8<-----------------
 
 [![Arrival](https://d20xvz37guknpy.cloudfront.net/Arrival_thumb.jpg)](https://d20xvz37guknpy.cloudfront.net/Arrival_thumb.jpg)
 
