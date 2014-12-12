@@ -7,6 +7,8 @@ Tags:
 Posted: 2012-02-18T19:58:00Z
 I sat down to hack on [Pullme](https://github.com/andrewlorente/pullme) for the first time on my new macbook. I ran into unreasonable roadblocks:
 
+----------8<-----------------
+
 ```
 $ mkvirtualenv pullme
 Running virtualenv with interpreter /usr/local/Cellar/python/2.7.2/bin/python

@@ -4,6 +4,8 @@ Tags:
     prague
 Waking up late Tuesday morning, I resolved to simply head home. The desk was somewhat flummoxed to see me checking out early, but I needed my medicine, so I was resolute--or desperate, take your pick. I headed down the hill to the tram. I'd picked up a couple extra transit tickets at the hospital the day before, so I was able to jump on and head towards town.
 
+----------8<-----------------
+
 Remember yesterday, when I said I should've been looking for the metro? Well, the tram didn't head toward town. When I realized I was going the wrong way, I got off, rode back to where I figured I'd left the right path, and started reading my map more carefully. My slow realization that the tram and the metro weren't the same thing was interupted by a peal of thunder, and the skies opened up.
 
 Lost, tired, and unmedicated, I gave up on transit and found a bartender to call me a cab. He apparently found a car service instead, but 15 minutes later I was off the street and on the way home. At least the downpour had washed some of the stink off my 4-day-old set of clothes.

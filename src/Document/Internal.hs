@@ -3,11 +3,12 @@
 
 module Document.Internal where
 
+
 import           Data.Default          (def)
 import qualified Data.Set              as S
 import qualified Data.Text             as T
-import qualified Data.Text.Lazy        as L
 import           Data.Functor.Identity
+import qualified Data.Text.Lazy        as L
 import           Data.Time.Clock
 import           Data.Time.ISO8601     (parseISO8601)
 import           Text.Blaze.Html       (Html)
@@ -52,10 +53,15 @@ tags = try $ do
   string "Tags:\n"
   fmap (map T.pack) $ many $ (string "    ") >> singleLine
 
-body :: ParsecT String u Identity Html
-body = fmap (md . L.pack . unlines) (many1 singleLine)
-    where
-      md = markdown $ def { msXssProtect = False }
+aboveFold :: ParsecT String u Identity Html
+aboveFold = do
+    let dashes = many1 $ char '-'
+        separator = dashes >> string "8<" >> dashes >> char '\n'
+    above <- manyTill singleLine $ try separator
+    return $ md $ L.pack $ unlines above
+
+belowFold :: ParsecT String u Identity Html
+belowFold = fmap (md . L.pack . unlines) $ many1 singleLine
 
 singleLine :: ParsecT String u Identity String
 singleLine = manyTill anyChar (char '\n')
@@ -65,3 +71,6 @@ slugify = T.filter (`S.member` legalChars) . T.map despace . T.toLower
   where despace ' ' = '-'
         despace x = x
         legalChars = S.fromList $ '-' : ['0'..'9'] ++ "_" ++ ['a'..'z']
+
+md :: L.Text -> Html
+md = markdown $ def { msXssProtect = False }

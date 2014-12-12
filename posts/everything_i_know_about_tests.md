@@ -8,6 +8,8 @@ In an email, Rachel King asked a fairly open-ended question about writing tests:
 
 Since everything I know about testing is stuff I just picked up along the way, I don't know of any good guides off the top of my head. I started writing up what I do know, but when I realized I had a pretty sizeable document on my hands, I thought I'd make it a blog post instead. Let's get to it!
 
+----------8<-----------------
+
 ### Unit tests and integration tests
 
 I think of these two things as the ends of a spectrum. A _unit test_ acts on a single logical unit--ideally a [pure function](https://en.wikipedia.org/wiki/Pure_function)--and shows that it works the way it's supposed to, in isolation. An _integration test_ acts on a large swathe of the code at once, showing that all the pieces work together harmoniously. In general, moving toward the unit end of the spectrum will make a test easier to understand and debug, while moving toward the integration end will provide stronger assurances about the system's overall reliability.

@@ -11,23 +11,31 @@ import           Test.HUnit
 import           Data.Default                   (def)
 import           Data.List                      (sort, intercalate)
 import           Data.Maybe                     (fromJust)
+import qualified Data.Text.Lazy                 as L
 import           Data.Time.ISO8601              (parseISO8601)
 import           Document
-import           Document.Internal              (posted, body, slug, slugify)
 import           Text.Markdown                  (markdown)
 import qualified Text.Parsec                    as P
 import qualified Text.Parsec.Error              as P
 import qualified Text.Parsec.Pos                as P
 import           Text.Blaze.Html.Renderer.Text  (renderHtml)
+import  Document.Internal ( posted
+                          , aboveFold
+                          , belowFold
+                          , slug
+                          , slugify
+                          )
 deriving instance Show P.Message
 
 testGroups = [
     testGroup "Successful document parsing" [
       testCase "parse a simple document" test_parse_simple_doc
+    , testCase "above/below fold content" test_folded_doc
     , testCase "Tag declaration may be omitted" test_omit_tag_field
     , testCase "declarations can be in any order" test_parse_in_any_order
     , testCase "infer the slug from the title" test_infer_slug_from_title
     , testCase "infer the disqus id from the slug" test_infer_disqus_id_from_slug
+    , testCase "parse the above-fold content" test_parse_above_fold
     , testCase "markdown in the body is rendered as html" test_render_markdown
     ]
   , testGroup "Field parsing errors" [
@@ -42,7 +50,7 @@ testGroups = [
   ]
 
 test_parse_simple_doc = do
-    let parseResult = parse $ intercalate "\n" [
+    let (Right parseResult) = parse $ intercalate "\n" [
             "Title: Whoa Mama!"
           , "Slug: whoa-mama"
           , "Posted: 2014-03-28T06:50:30-0700"
@@ -55,16 +63,40 @@ test_parse_simple_doc = do
           , "We will have fun."
           , ""
           ]
-        doc = Document {
-            dTitle = "Whoa Mama!"
-          , dSlug = "whoa-mama"
-          , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
-          , dTags = ["partying", "drinkin'", "socializing"]
-          , dDisqusId = "8"
-          , dBody = markdown def "Party at my place!\nWe will have fun.\n"
-        }
 
-    parseResult @?= (Right doc)
+    dTitle parseResult @?= "Whoa Mama!"
+    dSlug parseResult @?= "whoa-mama"
+    dPosted parseResult @?= fromJust (parseISO8601 "2014-03-28T13:50:30Z")
+    dTags parseResult @?= ["partying", "drinkin'", "socializing"]
+    dDisqusId parseResult @?= "8"
+    renderHtml (dAboveFold parseResult) @?= L.concat [ "<p>Party at my "
+                                                     , "place!\nWe will have "
+                                                     , "fun.</p>"
+                                                     ]
+    renderHtml (dBelowFold parseResult) @?= ""
+    dHasFold parseResult @?= False
+
+test_parse_above_fold = do
+    let parseResult = fmap renderHtml $ P.parse aboveFold "" $
+          intercalate "\n" [ "more after the jump..."
+                           , "-------8<--------"
+                           , ""
+                           ]
+    parseResult @?= Right "<p>more after the jump...</p>"
+
+test_folded_doc = do
+    let (Right parseResult) = parse $ intercalate "\n" [
+            "Title: More after the jump"
+          , "Posted: 2014-03-28T06:50:30-0700"
+          , "More after the jump:"
+          , "-----8<--------"
+          , "SUPER DETAILS"
+          , ""
+          ]
+
+    renderHtml (dAboveFold parseResult) @?= "<p>More after the jump:</p>"
+    renderHtml (dBelowFold parseResult) @?= "<p>SUPER DETAILS</p>"
+    dHasFold parseResult @?= True
 
 test_omit_tag_field = do
     let parseResult = parse $ intercalate "\n" [
@@ -93,7 +125,9 @@ test_parse_in_any_order = do
           , dDisqusId = "rebellion"
           , dPosted = (fromJust $ parseISO8601 "2014-03-28T13:50:30Z")
           , dTags = []
-          , dBody = markdown def "You cannot pin me down with your REGULATIONS"
+          , dAboveFold = markdown def "You cannot pin me down with your REGULATIONS"
+          , dBelowFold = ""
+          , dHasFold = False
         }
 
     parseResult @?= (Right doc)
@@ -125,7 +159,7 @@ test_infer_disqus_id_from_slug = do
     fmap dDisqusId parseResult @?= (Right "this-is-spartaaaaaa")
 
 test_render_markdown = do
-  let parseResult = fmap renderHtml $ P.parse body "" "[click here for wonder](https://andrewlorente.com)\n"
+  let parseResult = fmap renderHtml $ P.parse belowFold "" "[click here for wonder](https://andrewlorente.com)\n"
 
   parseResult @?= (Right "<p><a href=\"https://andrewlorente.com\">click here for wonder</a></p>")
 

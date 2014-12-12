@@ -8,6 +8,8 @@ Tags:
 
 This post involves a discussion of two people, "Rita" and "Bastian," whose identities I've chosen to obfuscate. An astute reader will be able to divine their identities. A _responsible_ reader will choose not to do so. I invite you to be responsible.
 
+----------8<-----------------
+
 I spent some time this evening discussing feminism in tech. My colleague Rita brought up the subject of microaggressions. She gave the following anecdote as an example:
 
 > I was talking with Bastian about programming languages and mentioned that people don't like X for reason Y. He wondered, "how would you know?"

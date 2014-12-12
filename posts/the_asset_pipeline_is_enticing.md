@@ -14,6 +14,8 @@ A ActionView::Template::Error occurred in posts#index:
  application.css isn't precompiled
 ```
 
+--------8<------------
+
 Initially it wouldn't compile at all; per [Heroku's troubleshooting tips](http://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar#troubleshooting) I added `config.assets.initialize_on_precompile = false` to config/application.rb . Now when I push to heroku, the output log appears to be successfully precompiling my assets:
 
 ```

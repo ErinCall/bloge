@@ -4,6 +4,8 @@ Tags:
     prague
 Upon waking on my second day in Prague, I resolved to just stick things out and try to enjoy the city without my medicine. I headed down the hill and found the tram, but no ticket machine. Some days later I would realize I should have been looking for the subway, not the tram, and if I'd found the subway I would've found a ticket machine. At the time, all I knew was I couldn't get a ticket.
 
+----------8<-----------------
+
 I figured I'd just follow the tracks into the Old Town. Looking at google maps now, I can see this probably would've worked, but it would've been a 5-mile hike each way. In reality I made it maybe a kilometer before the lethargy and weakness from my withdrawal pulled me up short. Casting about, I found a pharmacy and tried to convince them to retrieve my prescription from my pharmacy in the US. They either didn't understand what I was saying, or you can't transfer prescriptions internationally like that. Either way, they turfed me to a hospital I'd passed earlier.
 
 It was at the top of a hill, of course.

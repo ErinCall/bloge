@@ -7,6 +7,8 @@ Tags:
 Slug: regular-expressions
 My friend [Shawna Scott](http://shawnacscott.com/blog/) encountered a need for regular expressions for the first time recently. I went to link her to some information, but I couldn't find a single introduction online that satisfied me. That lack seems disastrous. Regular Expressions are so important that every major programming language provides an engine for executing them, and many embed that engine directly into the parent language's syntax. They're inescapable--yet no tutorial measures up. Let's see what I can do, shall we?
 
+----------8<-----------------
+
 ### What Are Regular Expressions?
 
 Regular Expressions are a specialized programming language for describing some aspect of a body of text that is of interest to you. I want to emphasize that regular expressions are a whole and entire _programming language_. They are not Turing complete, and their abilities are limited to text processing. Nevertheless, they truly are a language in their own right.

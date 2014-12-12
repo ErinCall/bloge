@@ -7,6 +7,8 @@ Tags:
 
 If you've worked in Ruby much, you're probably familiar with using `begin`/`rescue`/`end` to catch exceptions. Did you know there are other ways to use rescue? It's true! You may be able to delete a bit of software by using inline or implicit rescues.
 
+--------8<------------
+
 ### Inline Rescue
 
 You can catch exceptions from a single statement by putting a `rescue` at the end of the line:

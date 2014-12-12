@@ -6,6 +6,8 @@ Tags:
 Posted: 2012-12-31T00:02:00Z
 When you use git at work and for personal projects, it's easy to mess up and make a commit using the wrong identity. You can end up with your work email attached to a commit for your personal work, or your personal email attached to your professional work. One solution is to simply isolate your code: only do your work programming on your work computer and only do your personal programming on your personal computer. That's not always practical, though. For example, you might find yourself wanting to do personal work while travelling with your work computer. In this post I'll show you how I manage that problem.
 
+----------8<-----------------
+
 When you first run `git commit` on a new computer, it asks you to run a global config command to set up your identity:
 
 ```

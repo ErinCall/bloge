@@ -1,8 +1,6 @@
 <apply template="base">
   <bind tag="page-title"><postTitle/> | Professional Software Deleter</bind>
-  <article>
-    <apply template="_post"/>
-  </article>
+  <apply template="_full_post"/>
   <div id="disqus_thread" data-disqusidentifier="${postDisqusId}"></div>
   <script type="text/javascript">
       var disqus_shortname = 'andrewlorente';

@@ -41,16 +41,28 @@ documentSplices d = do
   "postSlug"       ## I.textSplice (dSlug d)
   "postDisqusId"   ## I.textSplice (dDisqusId d)
   "postPostedDate" ## postedSplice d
-  "postBody"       ## I.runNodeList $ X.docContent $ X.renderHtml $ dBody d
+  "postAboveFold"  ## renderContent $ dAboveFold d
+  "postBelowFold"  ## renderContent $ dBelowFold d
+  "postFoldNote"   ## I.runNodeList
+                        [ if dHasFold d
+                          then X.Element "a"
+                                         [("href", "/p/" `T.append` dSlug d)]
+                                         [X.TextNode "(Read the full post...)"]
+                          else X.TextNode ""
+                        ]
   "xmlPostContent" ## I.runNodeList
       [ X.Element "content"
                   [("type", "html")]
-                  [ X.TextNode $ T.toStrict $ T.renderHtml $ dBody d ]]
+                  [ X.TextNode $ T.toStrict $ T.renderHtml $ dAboveFold d
+                  , X.TextNode $ T.toStrict $ T.renderHtml $ dBelowFold d
+                  ]
+      ]
   "tagListing"     ## I.runNodeList $ if (null $ dTags d) then [] else
       [ X.TextNode "Posted in " ]
       ++ (intersperse (X.TextNode ", ") $ map tagLink $ dTags d) ++
       [ X.TextNode "." ]
     where
+      renderContent = I.runNodeList . X.docContent . X.renderHtml
       tagLink tag = X.Element "a"
                               [("href", "/t/" `T.append` tag)]
                               [X.TextNode tag]
