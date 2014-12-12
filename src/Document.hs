@@ -1,6 +1,7 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Document (
     Tag,
@@ -28,16 +29,22 @@ instance Eq Html where
   a == b = (renderHtml a == renderHtml b)
 
 data Document = Document {
-    dTitle    :: T.Text
-  , dSlug     :: T.Text
-  , dDisqusId :: T.Text
-  , dPosted   :: UTCTime
-  , dTags     :: [ Tag ]
-  , dBody     :: Html
+    dTitle     :: T.Text
+  , dSlug      :: T.Text
+  , dDisqusId  :: T.Text
+  , dPosted    :: UTCTime
+  , dTags      :: [ Tag ]
+  , dAboveFold :: Html
+  , dBelowFold :: Html
+  , dHasFold   :: Bool
 } deriving (Eq)
 instance Show Document where
   show d = T.unpack $ T.unlines $ map ($ d)
-           [dTitle, dSlug, L.toStrict . renderHtml . dBody]
+           [dTitle, dSlug, above, below]
+    where
+      above = T.append "Above:\n" . render . dAboveFold
+      below = T.append "Below:\n" . render . dBelowFold
+      render = L.toStrict . renderHtml
 
 parse :: String -> Either ParseError Document
 parse = parse' ""
@@ -58,8 +65,13 @@ parse' filename = P.parse document filename
           dDisqusId = if T.null mDisqusId
                       then dSlug
                       else mDisqusId
-      dBody <- body
+
+      dAboveFold <- try aboveFold <|> belowFold
+      dBelowFold <- try belowFold <|> (return "")
       eof
+
+      let dHasFold = not $ L.null $ renderHtml dBelowFold
+
       return Document {..}
 
 type DocMap = Map T.Text [Document]

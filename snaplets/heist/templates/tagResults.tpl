@@ -5,7 +5,7 @@
   <h2>Posts tagged <tagName/></h2>
   <posts>
     <article>
-      <apply template="_post"/>
+      <apply template="_partial_post"/>
       <a href="/p/${postSlug}#disqus_thread" data-disqus-identifier="${postDisqusId}"></a>
     </article>
   </posts>

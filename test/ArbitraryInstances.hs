@@ -43,5 +43,7 @@ instance Arbitrary Document where
     dDisqusId <- arbitrary
     dTags <- arbitrary
     dSlug <- arbitrary
-    dBody <- arbitrary
+    dAboveFold <- arbitrary
+    dBelowFold <- arbitrary
+    dHasFold <- arbitrary
     return Document {..}

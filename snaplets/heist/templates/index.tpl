@@ -2,7 +2,7 @@
   <bind tag="page-title">Professional Software Deleter</bind>
   <posts>
     <article>
-      <apply template="_post"/>
+      <apply template="_partial_post"/>
       <a href="/p/${postSlug}#disqus_thread" data-disqus-identifier="${postDisqusId}"></a>
     </article>
   </posts>

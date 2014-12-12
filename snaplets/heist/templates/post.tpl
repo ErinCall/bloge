@@ -1,7 +1,7 @@
 <apply template="base">
   <bind tag="page-title"><postTitle/> | Professional Software Deleter</bind>
   <article>
-    <apply template="_post"/>
+    <apply template="_full_post"/>
   </article>
   <div id="disqus_thread" data-disqusidentifier="${postDisqusId}"></div>
   <script type="text/javascript">
