@@ -4,10 +4,7 @@
   </bind>
   <h2>Posts tagged <tagName/></h2>
   <posts>
-    <article>
-      <apply template="_partial_post"/>
-      <a href="/p/${postSlug}#disqus_thread" data-disqus-identifier="${postDisqusId}"></a>
-    </article>
+    <apply template="_partial_post"/>
   </posts>
   <script type="text/javascript">
     var disqus_shortname = 'andrewlorente';
