@@ -13,7 +13,7 @@
     <div class="content">
       <header>
         <a href="/">
-          <img src="/static/images/header.png" alt="Andrew Lorente" class="header-image">
+          <img src="/static/images/header.jpg" alt="Andrew Lorente" class="header-image">
           <h1>
             Andrew Lorente
           </h1>
