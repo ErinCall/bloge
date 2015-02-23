@@ -63,7 +63,7 @@ def get_some_bread
 end
 ```
 
-The caveat here is that you have to wrap the whole method in your catch. As with catching all exceptions, it's risky to catch exceptions from code you didn't know could raise them: your handler is likely to do the wrong thing, putting your program in a consistent state. Still, this can be useful for small methods.
+The caveat here is that you have to wrap the whole method in your catch. As with catching all exceptions, it's risky to catch exceptions from code you didn't know could raise them: your handler is likely to do the wrong thing, putting your program in an inconsistent state. Still, this can be useful for small methods.
 
 ### End
 
