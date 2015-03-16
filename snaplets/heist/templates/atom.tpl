@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Andrew Lorente</title>
-  <subtitle>Professional Software Deleter</subtitle>
+  <subtitle>Making Software And Things</subtitle>
   <link href="https://blog.andrewlorente.comg/posts.atom" rel="self" type="application/atom+xml"/>
   <link href="http:s//blog.andrewlorente.com" />
   <id>tag:blog.andrewlorente.com,2008:/posts</id>

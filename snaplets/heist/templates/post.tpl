@@ -1,5 +1,5 @@
 <apply template="base">
-  <bind tag="page-title"><postTitle/> | Professional Software Deleter</bind>
+  <bind tag="page-title"><postTitle/> | Making Software And Things</bind>
   <apply template="_full_post"/>
   <div id="disqus_thread" data-disqusidentifier="${postDisqusId}"></div>
   <script type="text/javascript">

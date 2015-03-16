@@ -1,5 +1,5 @@
 <apply template="base">
-  <bind tag="page-title">Professional Software Deleter</bind>
+  <bind tag="page-title">Making Software And Things</bind>
   <posts>
     <apply template="_partial_post"/>
   </posts>
