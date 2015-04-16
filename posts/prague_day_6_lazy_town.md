@@ -12,10 +12,10 @@ Saturday, my travel day, was similarly uneventful. I did finally figure out the 
 
 As you can imagine, none of this led to a lot of photo ops. I did see a neat piece of public art:
 
-![In Utero](https://cdn.andrewlorente.com/1f972a00493da40d8948a9822ce465c19d8ee65d_medium)
+![In Utero](https://cdn.erincall.com/1f972a00493da40d8948a9822ce465c19d8ee65d_medium)
 
 And a subway tunnel with its skin removed:
 
-![Subway Tunnel](https://cdn.andrewlorente.com/0cc1f745945d7b8a775275ed448a6f1d1d31c3a8_medium)
+![Subway Tunnel](https://cdn.erincall.com/0cc1f745945d7b8a775275ed448a6f1d1d31c3a8_medium)
 
 So those days weren't a total loss.

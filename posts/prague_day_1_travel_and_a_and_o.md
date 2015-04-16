@@ -18,6 +18,6 @@ I got checked in, grabbed my camera, and went to do some sightseeing around my h
 
 Unfortunately, the area around the A-and-O isn't particularly pretty. It's not a particularly old or affluent area; there are lots of crumbling walls and car-repair shops. I did find a restaurant with absolutely excellent food, at least.
 
-That's all for today, but be sure to [take a look at the pictures I took](https://catsnap.andrewlorente.com/image/1925).
+That's all for today, but be sure to [take a look at the pictures I took](https://catsnap.erincall.com/image/1925).
 
 Tomorrow: sunburn, psychiatry, and senselessness!

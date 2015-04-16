@@ -18,7 +18,7 @@ The driver had enough English for me to communicate what I needed, but not nearl
 
 I checked into my lovely old-new hotel:
 
-![Hotel Hastal](https://cdn.andrewlorente.com/dfa7d5fdcd01f04d903e261bbfe7a640b7009343_small)
+![Hotel Hastal](https://cdn.erincall.com/dfa7d5fdcd01f04d903e261bbfe7a640b7009343_small)
 
 I showered and shaved and changed my clothes.
 
@@ -26,4 +26,4 @@ I brushed my teeth and put on deodorant.
 
 I strode out the door, tall and confident and brave, and _immediately made a beeline for the nearest restaurant_, because I hadn't actually eaten anything but a Snickers bar all day.
 
-Once I got some pork and mashed potatoes into me, I went and did a little sightseeing before diving headfirst into bed. [Have a look at my pictures of the evening](https://catsnap.andrewlorente.com/image/1935)!
+Once I got some pork and mashed potatoes into me, I went and did a little sightseeing before diving headfirst into bed. [Have a look at my pictures of the evening](https://catsnap.erincall.com/image/1935)!

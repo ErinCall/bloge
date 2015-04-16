@@ -13,9 +13,9 @@
     <div class="content">
       <header>
         <a href="/">
-          <img src="/static/images/header.jpg" alt="Andrew Lorente" class="header-image">
+          <img src="/static/images/header.jpg" alt="Erin Call" class="header-image">
           <h1>
-            Andrew Lorente
+            Erin Call
           </h1>
           <h2>
             Making Software And Things
@@ -28,7 +28,7 @@
     </div>
     <footer>
       <div>
-        Site by Andrew Lorente. All content is <a href="https://creativecommons.org/licenses/by-sa/4.0/">licensed Creative Commons Share-Alike.</a>
+        Site by Erin Call. All content is <a href="https://creativecommons.org/licenses/by-sa/4.0/">licensed Creative Commons Share-Alike.</a>
         <a href="http://validator.w3.org/check?uri=${currentPath}"><i class="fa fa-html5"></i></a>
         <a href="/posts.atom"><i class="fa fa-rss"></i></a>
       </div>

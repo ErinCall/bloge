@@ -2,9 +2,9 @@ Title: Setting Up SNI On Cloudfront
 Tags:
     ssl
 Posted: 2014-04-29T00:27:07+0000
-I have this app [Catsnap](http://catsnap.andrewlorente.com) that I use to organize my photos (as well as gifs I pick up around the internet). It stores the images on Amazon S3, and has a cloudfront distribution attached for OMGFAST load times. The cloudfront distro has an ugly domain, though--"d5hwde6hzncg6.cloudfront.net". The links don't look like something you should click.
+I have this app [Catsnap](http://catsnap.erincall.com) that I use to organize my photos (as well as gifs I pick up around the internet). It stores the images on Amazon S3, and has a cloudfront distribution attached for OMGFAST load times. The cloudfront distro has an ugly domain, though--"d5hwde6hzncg6.cloudfront.net". The links don't look like something you should click.
 
-So, this problem has a trivial solution, right? Just [make a CNAME](http://www.petekeen.net/dns-the-good-parts) pointing e.g. cdn.andrewlorente.com to d5whatever.cloudfront.net? Yes, BUT: I'd no longer be able to use SSL/TLS. The SSL/TLS model ties certificates to particular domain names, so the certificate Amazon has for \*.cloudfront.net is invalid for cdn.andrewlorente.com (or any domains other than \*.cloudfront.net). [I think using SSL/TLS is important](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS), so that wasn't acceptable.
+So, this problem has a trivial solution, right? Just [make a CNAME](http://www.petekeen.net/dns-the-good-parts) pointing e.g. cdn.erincall.com to d5whatever.cloudfront.net? Yes, BUT: I'd no longer be able to use SSL/TLS. The SSL/TLS model ties certificates to particular domain names, so the certificate Amazon has for \*.cloudfront.net is invalid for cdn.erincall.com (or any domains other than \*.cloudfront.net). [I think using SSL/TLS is important](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS), so that wasn't acceptable.
 
 Fortunately, the [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) extension to TLS offers a fix for this, and since March 2014, Cloudfront supports it. Let's get into setting it up!
 
@@ -15,11 +15,11 @@ Fortunately, the [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) exte
 Amazon requires you to upload the private key you'll use, so I think you should assign a specific key to your CDN. I have a wildcard certificate I could use for my cdn domain, but distributing private keys to anyone--even an entity as reputable as Amazon--is a bad idea, so let's generate a fresh public/private key pair to use with Amazon. Run these commands (you may have to install openssl):
 
 ```
-openssl genrsa -out cdn_andrewlorente_com.key 2048
-openssl req -new -key cdn_andrewlorente_com.key -out cdn_andrewlorente_com.csr
+openssl genrsa -out cdn_erincall_com.key 2048
+openssl req -new -key cdn_erincall_com.key -out cdn_erincall_com.csr
 ```
 
-Of course, you should replace `cdn_andrewlorente_com` with your own domain. The second command will prompt you for various information; for the most part it's obvious what you should enter. It's imperative, though, that you enter your CDN domain at the "Common Name" prompt, and leave the "challenge password" blank.
+Of course, you should replace `cdn_erincall_com` with your own domain. The second command will prompt you for various information; for the most part it's obvious what you should enter. It's imperative, though, that you enter your CDN domain at the "Common Name" prompt, and leave the "challenge password" blank.
 
 You now have two files, a `.key` and a `.csr` (for Certificate Signing Request). The `.key` file is your private key; you should keep it close to your vest. The .csr is public information and you don't have to be careful with it.
 
@@ -32,13 +32,13 @@ While you're waiting for the email, let's get the AWS command-line client set up
 Ok, check your email. Got that zip file? Unzip it to find your certificate, as well as several other certificates representing a "root chain." You'll need to combine the root chain certificates into one large "chain" file. Comodo doesn't provide much information about which order they need to go in. Personally, I had three files: `COMODORSADomainValidationSecureServerCA.crt`, `COMODORSAAddTrustCA.crt`, and `AddTrustExternalCARoot.crt`. You may receive a different set. Whatever you have, you need to concatenate them into a single file, with the CA Root _last_. Do not include your site's certificate (this may be different from what you're used to when feeding a chain to, say nginx). The command I used was:
 
 ```
-cat COMODORSADomainValidationSecureServerCA.crt COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt  >| cdn_andrewlorente_com.chain
+cat COMODORSADomainValidationSecureServerCA.crt COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt  >| cdn_erincall_com.chain
 ```
 
 Now you need to upload to Cloudfront using the AWS CLI. Pick a name for your certificate. It just needs to be meaningful to you; you'll use it in the AWS console. The upload command is:
 
 ```
-aws iam upload-server-certificate --server-certificate-name $NAME --certificate-body file://cdn_andrewlorente_com.crt  --private-key file://cdn_andrewlorente_com.key --certificate-chain file://cdn_andrewlorente_com.chain --path /cloudfront/production/
+aws iam upload-server-certificate --server-certificate-name $NAME --certificate-body file://cdn_erincall_com.crt  --private-key file://cdn_erincall_com.key --certificate-chain file://cdn_erincall_com.chain --path /cloudfront/production/
 ```
 
 That command might fail with a MalformedCertificate error:

@@ -159,9 +159,9 @@ test_infer_disqus_id_from_slug = do
     fmap dDisqusId parseResult @?= (Right "this-is-spartaaaaaa")
 
 test_render_markdown = do
-  let parseResult = fmap renderHtml $ P.parse belowFold "" "[click here for wonder](https://andrewlorente.com)\n"
+  let parseResult = fmap renderHtml $ P.parse belowFold "" "[click here for wonder](https://erincall.com)\n"
 
-  parseResult @?= (Right "<p><a href=\"https://andrewlorente.com\">click here for wonder</a></p>")
+  parseResult @?= (Right "<p><a href=\"https://erincall.com\">click here for wonder</a></p>")
 
 
 test_fail_datetime_validation = do

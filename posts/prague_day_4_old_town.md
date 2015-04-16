@@ -6,4 +6,4 @@ I woke up Wednesday morning feeling refreshed and ready to enjoy this wonderful 
 
 I'd decided to split my remaining 3 days in Prague into 3 sections of town: Wednesday in the Old Town, Thursday in the New Town, and Friday in the Small and Castle Quarters. This plan worked well, and things were mostly uneventful on Wednesday. I walked across the Charles Bridge, visited the Museum Of Medieval Torture (somewhat disappointing) and walked through the Jewish Quarter.
 
-There's not much else to say, but as always be sure to [check out my pictures from the day](https://catsnap.andrewlorente.com/album/12)!
+There's not much else to say, but as always be sure to [check out my pictures from the day](https://catsnap.erincall.com/album/12)!
