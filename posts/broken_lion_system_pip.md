@@ -5,7 +5,7 @@ Tags:
     python
     bugs
 Posted: 2012-02-18T19:58:00Z
-I sat down to hack on [Pullme](https://github.com/andrewlorente/pullme) for the first time on my new macbook. I ran into unreasonable roadblocks:
+I sat down to hack on [Pullme](https://github.com/erincall/pullme) for the first time on my new macbook. I ran into unreasonable roadblocks:
 
 ----------8<-----------------
 
@@ -82,11 +82,11 @@ $ mkvirtualenv pullme
 New python executable in pullme/bin/python
 Installing setuptools.............done.
 Installing pip...............done.
-virtualenvwrapper.user_scripts creating /Users/andrewlorente/Envs/pullme/bin/predeactivate
-virtualenvwrapper.user_scripts creating /Users/andrewlorente/Envs/pullme/bin/postdeactivate
-virtualenvwrapper.user_scripts creating /Users/andrewlorente/Envs/pullme/bin/preactivate
-virtualenvwrapper.user_scripts creating /Users/andrewlorente/Envs/pullme/bin/postactivate
-virtualenvwrapper.user_scripts creating /Users/andrewlorente/Envs/pullme/bin/get_env_details
+virtualenvwrapper.user_scripts creating /Users/erincall/Envs/pullme/bin/predeactivate
+virtualenvwrapper.user_scripts creating /Users/erincall/Envs/pullme/bin/postdeactivate
+virtualenvwrapper.user_scripts creating /Users/erincall/Envs/pullme/bin/preactivate
+virtualenvwrapper.user_scripts creating /Users/erincall/Envs/pullme/bin/postactivate
+virtualenvwrapper.user_scripts creating /Users/erincall/Envs/pullme/bin/get_env_details
 ```
 
 Success!

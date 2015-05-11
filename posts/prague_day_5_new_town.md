@@ -14,6 +14,6 @@ The Museum Of Communism was much better. Historical exhibits provided informatio
 
 After an hour or so of reading about secret police and shoot-on-sight border zones, I felt pretty ready for some American-style capitalism, so I went to McDonald's and got a Coca-Cola:
 
-![USA! USA!](https://cdn.andrewlorente.com/1f8326a545b7931c278c65a3498f0fb472ed46ee_small)
+![USA! USA!](https://cdn.erincall.com/1f8326a545b7931c278c65a3498f0fb472ed46ee_small)
 
-Check out [the rest of my pictures from the day](https://catsnap.andrewlorente.com/album/13), as well!
+Check out [the rest of my pictures from the day](https://catsnap.erincall.com/album/13), as well!

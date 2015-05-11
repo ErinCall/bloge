@@ -53,7 +53,7 @@ I've tried manually precompiling my assets:
 
 ```
 $ RAILS_ENV=production bundle exec rake assets:precompile
-/Users/andrewlorente/.rvm/rubies/ruby-1.9.2-p290/bin/ruby /Users/andrewlorente/.rvm/gems/ruby-1.9.2-p290@opinions/bin/rake assets:precompile:all RAILS_ENV=production RAILS_GROUPS=assets
+/Users/erincall/.rvm/rubies/ruby-1.9.2-p290/bin/ruby /Users/erincall/.rvm/gems/ruby-1.9.2-p290@opinions/bin/rake assets:precompile:all RAILS_ENV=production RAILS_GROUPS=assets
 
 $ git add public/assets
 $ git commit -m "precompiled assets"
