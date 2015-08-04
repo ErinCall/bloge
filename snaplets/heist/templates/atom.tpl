@@ -12,7 +12,7 @@
   <posts>
     <entry>
       <title><postTitle/></title>
-      <link href="https://blog.erincall.com/p/#{postSlug}"/>
+      <link href="https://blog.erincall.com/p/${postSlug}"/>
       <id>tag:blog.erincall.com,2008:p/<postSlug/></id>
       <updated><postPostedDate/></updated>
       <xmlPostContent/>
