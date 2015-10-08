@@ -1,6 +1,6 @@
 <apply template="base">
   <bind tag="page-title">
-    Posts tagged <tagName/> | Making Software And Things
+    Posts tagged <tagName/> | You Can't Spell Engineering Without Erin
   </bind>
   <h2>Posts tagged <tagName/></h2>
   <posts>

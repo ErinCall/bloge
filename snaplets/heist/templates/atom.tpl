@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Erin Call</title>
-  <subtitle>Making Software And Things</subtitle>
+  <subtitle>You Can't Spell Engineering Without Erin</subtitle>
   <link href="https://blog.erincall.comg/posts.atom" rel="self" type="application/atom+xml"/>
   <link href="http:s//blog.erincall.com" />
   <id>tag:blog.erincall.com,2008:/posts</id>

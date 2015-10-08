@@ -1,5 +1,5 @@
 <apply template="base">
-  <bind tag="page-title">Making Software And Things</bind>
+  <bind tag="page-title">You Can't Spell Engineering Without Erin</bind>
   <posts>
     <apply template="_partial_post"/>
   </posts>

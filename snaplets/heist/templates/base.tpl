@@ -18,7 +18,7 @@
             Erin Call
           </h1>
           <h2>
-            Making Software And Things
+            You Can't Spell Engineering Without Erin
           </h2>
         </a>
       </header>

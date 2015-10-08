@@ -1,5 +1,5 @@
 <apply template="base">
-  <bind tag="page-title"><postTitle/> | Making Software And Things</bind>
+  <bind tag="page-title"><postTitle/> | You Can't Spell Engineering Without Erin</bind>
   <apply template="_full_post"/>
   <div id="disqus_thread" data-disqusidentifier="${postDisqusId}"></div>
   <script type="text/javascript">
