@@ -3,7 +3,7 @@
   <apply template="_full_post"/>
   <div id="disqus_thread" data-disqusidentifier="${postDisqusId}"></div>
   <script type="text/javascript">
-    var disqus_identifier = "${postDisqusId}"
+    var disqus_identifier = document.getElementById('disqus_thread').dataset['disqusidentifier'];
   </script>
   <script src="//andrewlorente.disqus.com/embed.js" async></script>
 
