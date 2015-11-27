@@ -20,7 +20,7 @@ Deploying the 3.0 server is fairly straightforward. You'll need to set several e
 * DATABASE_URL: a url Catsnap can use to connect to its postgres database.
 * PORT: the port on which you want catsnap to listen.
 
-Once you have your environment set up, [clone catsnap](https://git.erincall.com/ErinCall/catsnap) into a directory of your choice. Change to the catsnap directory and install its dependencies:
+Once you have your environment set up, [clone catsnap](https://github.com/ErinCall/catsnap) into a directory of your choice. Change to the catsnap directory and install its dependencies:
 
 ```
 python setup.py install
@@ -53,4 +53,4 @@ pip install catsnap==3.0.0b1
 catsnap config
 ```
 
-I'm aware of a couple minor issues, but I expect to have them fixed within the next few days. Please [let me know](mailto:hello@erincall.com) about any problems you run across (or even [send me a merge request](https://git.erincall.com/ErinCall/catsnap)), and happy catsnapping!
+I'm aware of a couple minor issues, but I expect to have them fixed within the next few days. Please [let me know](mailto:hello@erincall.com) about any problems you run across (or even [send me a merge request](https://github.com/ErinCall/catsnap)), and happy catsnapping!
