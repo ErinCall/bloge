@@ -4,7 +4,7 @@ DisqusId: 20
 Posted: 2013-08-10T17:42:00Z
 Tags:
     python
-I've been wrestling with a mystery lately. The [Catsnap](https://git.erincall.com/ErinCall/catsnap) tests use a browser-interaction library called [Splinter](http://splinter.cobrateam.info/) to verify the JavaScript on the pages. After I added a few tests, I started to see some fairly bizarre performance problems.
+I've been wrestling with a mystery lately. The [Catsnap](https://github.com/ErinCall/catsnap) tests use a browser-interaction library called [Splinter](http://splinter.cobrateam.info/) to verify the JavaScript on the pages. After I added a few tests, I started to see some fairly bizarre performance problems.
 
 While the browser was doing things, it was very quick indeed. But at what looked like random times, [it would just sit and think about philosophy for a while](http://screencast.com/t/MpEpfe5mm). I asked about this on the Splinter mailing list and got no responses (I'm not sure how active that mailing list is), so I finally did some investigation on my own.
 
