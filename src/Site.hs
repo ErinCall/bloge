@@ -9,8 +9,8 @@ module Site
   ) where
 
 ------------------------------------------------------------------------------
+import           Control.Lens        (set)
 import           Data.ByteString     (ByteString)
-import           Data.Monoid         (mempty)
 import           Snap.Snaplet
 import           Snap.Snaplet.Heist
 import           Snap.Util.FileServe
@@ -37,15 +37,16 @@ routes = [ ("/",           ifTop index)
 app :: [Document] -> SnapletInit App App
 app docs = makeSnaplet "bloge" "Such posts, many tags, very markdown" Nothing $ do
     h <- nestSnaplet "" heist $ heistInit "templates"
-    let config = mempty {
-        hcInterpretedSplices = do
-            "currentPath" ## currentPath
-            "posts" ## (bindDocuments docs)
-            "latestPost" ## (postedSplice $ head docs)
-      }
+    let localSplices = do
+        "currentPath" ## currentPath
+        "posts" ## (bindDocuments docs)
+        "latestPost" ## (postedSplice $ head docs)
+    let heistConfig = set scInterpretedSplices localSplices $
+                      set scInterpretedSplices defaultInterpretedSplices $
+                      mempty
     addRoutes routes
     addRoutes $ documentRoutes docs
     addRoutes $ tagRoutes docs
-    addConfig h config
+    addConfig h heistConfig
     return $ App h
 
